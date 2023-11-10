@@ -1,3 +1,4 @@
+import AnimatedText from "../../animations/AnimatedText";
 import Bio from "./Bio";
 import Courses from "./Courses";
 import Experience from "./Experience";
@@ -37,6 +38,7 @@ const About = () => {
           className={`flex w-full flex-col items-center justify-center dark:text-light`}
         >
           <MainSection className="pt-16 xs:px-0">
+            <AnimatedText text="About Me" />
             <Bio />
             <NumberSummary />
             <Skills />
