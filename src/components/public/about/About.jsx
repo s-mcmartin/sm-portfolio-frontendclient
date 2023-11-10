@@ -1,5 +1,5 @@
 import Bio from "./Bio";
-import Courses2 from "./Courses2";
+import Courses from "./Courses";
 import Experience from "./Experience";
 import MainSection from "../../layout/MainSection";
 import NumberSummary from "./NumberSummary";
@@ -40,7 +40,7 @@ const About = () => {
             <Bio />
             <NumberSummary />
             <Skills />
-            <Courses2 />
+            <Courses />
             <Experience />
           </MainSection>
         </main>
