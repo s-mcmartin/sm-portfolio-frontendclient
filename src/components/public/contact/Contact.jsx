@@ -5,6 +5,7 @@ import ContactForm from "./ContactForm";
 import MainSection from "../../layout/MainSection";
 import TransitionEffect from "../../transitions/TransitionEffect";
 import { motion } from "framer-motion";
+import useTitle from "../../../hooks/useTitle";
 
 const Contact = () => {
   useTitle("SM_Portfolio: Contact Page");
