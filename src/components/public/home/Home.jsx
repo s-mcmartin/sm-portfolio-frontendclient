@@ -8,7 +8,7 @@ import { LinkArrow } from "../../icons/Icons";
 import MainSection from "../../layout/MainSection";
 import { TbBrandFramer } from "react-icons/tb";
 import TransitionEffect from "../../transitions/TransitionEffect";
-import profilePic from "../../../../public/assets/images/profile/computer photo (3).png";
+import profilePic from "../../../assets/images/homephoto.png";
 import useTitle from "../../../hooks/useTitle";
 
 const Home = () => {
@@ -77,7 +77,6 @@ const Home = () => {
             </div>
           </div>
         </MainSection>
-
         <HireMe />
       </article>
     </>
