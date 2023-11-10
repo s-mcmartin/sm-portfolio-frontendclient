@@ -5,7 +5,7 @@ import { useThemeSwitch } from "../../hooks/useThemeSwitch";
 
 const Header = () => {
   const [mode, setMode] = useThemeSwitch();
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => setIsOpen(!isOpen);
 

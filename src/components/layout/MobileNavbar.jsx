@@ -35,9 +35,9 @@ export const CustomMobileLink = ({ href, title, className = "", toggle }) => {
 const MobileNavbar = ({ mode, setMode, handleClick }) => {
   return (
     <motion.div
-      className="min-w-[70vw] sm:min-w-[90vw] flex justify-between items-center flex-col fixed top-1/2 left-1/2 -translate-x-1/2
+      className="min-w-[70vw] sm:min-w-[90vw]  justify-between items-center flex-col fixed top-1/2 left-1/2 -translate-x-1/2
 -translate-y-1/2
-py-32 bg-dark/90 dark:bg-light/75 rounded-lg z-50 backdrop-blur-md
+py-32 bg-dark/90 dark:bg-light/75 rounded-lg z-50 backdrop-blur-md hidden lg:flex
 "
       initial={{ scale: 0, x: "-50%", y: "-50%", opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
