@@ -5,14 +5,14 @@ import { Outlet } from "react-router-dom";
 //add Navbar and Footer here
 const Layout = () => {
   return (
-    <section>
-      <header>
+    <section className="flex flex-wrap h-screen">
+      <header className="h-fit w-full">
         <Navbar />
       </header>
-      <main>
+      <main className="grow w-full h-full bg-light dark:bg-dark">
         <Outlet />
       </main>
-      <footer>
+      <footer className="h-fit w-full">
         <Footer />
       </footer>
     </section>

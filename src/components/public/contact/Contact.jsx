@@ -3,14 +3,18 @@ import { AiFillGithub, AiFillLinkedin, AiFillMail } from "react-icons/ai";
 import AnimatedText from "../../animations/AnimatedText";
 import ContactForm from "./ContactForm";
 import MainSection from "../../layout/MainSection";
+import SuccessMessage from "./SuccessMessage";
 import TransitionEffect from "../../transitions/TransitionEffect";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import useTitle from "../../../hooks/useTitle";
 
 const Contact = () => {
   useTitle("SM_Portfolio: Contact Page");
+  const [showSuccess, setShowSuccess] = useState(true);
   return (
     <>
+      {showSuccess && <SuccessMessage setShowSuccess={setShowSuccess} />}
       <TransitionEffect />
       <main
         className={`mb-16 flex w-full flex-col items-center justify-center dark:text-light`}

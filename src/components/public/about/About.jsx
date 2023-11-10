@@ -1,13 +1,16 @@
 import AnimatedText from "../../animations/AnimatedText";
 import Bio from "./Bio";
 import Courses from "./Courses";
+import Error from "../../layout/Error";
 import Experience from "./Experience";
+import Loading from "../../layout/Loading";
 import MainSection from "../../layout/MainSection";
 import NumberSummary from "./NumberSummary";
 import { PulseLoader } from "react-spinners";
 import React from "react";
 import Skills from "./Skills";
 import TransitionEffect from "../../transitions/TransitionEffect";
+import { contactsApiSlice } from "./../../../features/contacts/contactsApiSlice";
 import { useGetCoursesQuery } from "../../../features/courses/coursesApiSlice";
 import useTitle from "../../../hooks/useTitle";
 
@@ -21,8 +24,8 @@ const About = () => {
     error,
   } = useGetCoursesQuery();
   let content;
-  if (isLoading) content = <PulseLoader />;
-  if (isError) content = <p>{error.data?.message}</p>;
+  if (isLoading) content = <Loading />;
+  if (isError) content = <Error content={error.error} />;
   if (isSuccess) {
     const { ids, entities } = courses;
     const featuredCourses = ids.filter(

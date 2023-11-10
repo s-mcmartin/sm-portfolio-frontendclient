@@ -51,9 +51,7 @@ const Home = () => {
               <div className="mt-2 flex items-center self-start lg:self-center">
                 <a
                   // eslint-disable-next-line react/no-unknown-property
-                  whileHover={{
-                    cursor: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='font-size:24px;'><text y='50%'>👆</text></svg>"), auto`,
-                  }}
+
                   href="/dummy.pdf"
                   target={"_blank"}
                   className={`flex items-center rounded-lg border-2 border-solid bg-dark p-2.5 px-6 text-lg font-semibold

@@ -5,14 +5,12 @@ import emailjs from "@emailjs/browser";
 import { useAddNewContactMutation } from "../../../features/contacts/contactsApiSlice";
 import useTitle from "../../../hooks/useTitle";
 
-const ContactForm = () => {
+const ContactForm = ({ setShowSuccess }) => {
   useTitle("SM_Portfolio: Client Contact Form");
   const form = useRef();
 
   const [addNewContact, { isLoading, isSuccess, isError, error }] =
     useAddNewContactMutation();
-
-  const [showSuccess, setShowSuccess] = useState(false);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -67,19 +65,8 @@ const ContactForm = () => {
     }
   };
 
-  const successMessage = (
-    <div className="w-[30vw] bg-light shadow-lg text-dark">
-      <h2 className="text-primary">Message successfully sent!</h2>
-      <p>Thank you for your message! I will get back to you very soon.</p>
-      <button className="" type="button" onClick={() => setShowSuccess(false)}>
-        Close
-      </button>
-    </div>
-  );
-
   return (
     <>
-      {showSuccess && successMessage}
       {isLoading && <RingLoader />}
       {isError && <p>{error?.data?.message}</p>}
       <form onSubmit={handleSubmit} ref={form} className="">

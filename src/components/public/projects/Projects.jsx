@@ -1,9 +1,10 @@
 import AnimatedText from "../../animations/AnimatedText";
 import Carousel from "./Carousel";
+import Error from "../../layout/Error";
 import FilterSearch from "./FilterSearch";
+import Loading from "../../layout/Loading";
 import MainSection from "../../layout/MainSection";
 import ProjectCard from "./ProjectCard";
-import { PulseLoader } from "react-spinners";
 import TransitionEffect from "../../transitions/TransitionEffect";
 import { useGetProjectsQuery } from "../../../features/projects/projectsApiSlice";
 import { useState } from "react";
@@ -20,6 +21,8 @@ const Projects = () => {
     error,
   } = useGetProjectsQuery();
 
+  console.log("error", error);
+
   const handleClickSearch = (e) => {
     const query = e.target.value;
     const selectedList = selected;
@@ -30,8 +33,8 @@ const Projects = () => {
   };
 
   let content;
-  if (isLoading) content = <PulseLoader />;
-  if (isError) content = <p>{error.data?.message}</p>;
+  if (isLoading) content = <Loading />;
+  if (isError) content = <Error content={error.error} />;
   if (isSuccess) {
     const { ids, entities } = projects;
     const featuredProjects = ids.filter(
