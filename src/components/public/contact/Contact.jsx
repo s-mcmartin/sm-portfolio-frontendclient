@@ -5,7 +5,7 @@ import emailjs from "@emailjs/browser";
 import { useAddNewContactMutation } from "../../../features/contacts/contactsApiSlice";
 import useTitle from "../../../hooks/useTitle";
 
-const ClientContactForm = () => {
+const Contact = () => {
   useTitle("SM_Portfolio: Client Contact Form");
   const form = useRef();
 
@@ -162,4 +162,4 @@ const ClientContactForm = () => {
   );
 };
 
-export default ClientContactForm;
+export default Contact;
