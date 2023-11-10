@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import About from "./components/public/about/About";
 import Admin from "./components/protected/Admin";
-import Contact from "./components/public/contact/Contact";
+import Contact from "./components/public/contact/ContactForm";
 import ContactList from "./features/contacts/ContactList";
 import CourseList from "./features/courses/CourseList";
 import DashLayout from "./components/layout/DashLayout";
