@@ -119,14 +119,14 @@ const Carousel = ({ projects }) => {
                 }}
               >
                 <DetailCard
-                  project={
+                  projectId={
                     projects[
                       `${
                         currentIndex + 1 === projects.length
                           ? 0
                           : currentIndex + 1
                       }`
-                    ]
+                    ].id
                   }
                 />
               </motion.div>

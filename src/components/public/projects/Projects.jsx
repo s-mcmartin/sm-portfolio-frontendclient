@@ -77,8 +77,8 @@ const Projects = () => {
                 ? ids.map((projectId) => (
                     <ProjectCard key={projectId} projectId={projectId} />
                   ))
-                : sortedSelectedProjects.map((project, index) => (
-                    <ProjectCard project={project} key={index} />
+                : sortedSelectedProjects.map((projectId, index) => (
+                    <ProjectCard projectId={projectId} key={index} />
                   ))}
             </div>
           </MainSection>

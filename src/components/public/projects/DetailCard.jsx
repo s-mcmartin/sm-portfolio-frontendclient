@@ -3,8 +3,12 @@ import React, { useState } from "react";
 import { easeInOut, motion } from "framer-motion";
 
 import { FiExternalLink } from "react-icons/fi";
+import { useGetProjectsQuery } from "../../../features/projects/projectsApiSlice";
 
-const DetailCard = ({ project }) => {
+const DetailCard = ({ projectId }) => {
+  const { project } = useGetProjectsQuery("projectsList", {
+    selectFromResult: ({ data }) => ({ project: data?.entities[projectId] }),
+  });
   const [expanded, setExpanded] = useState(false);
 
   const cardVariants = {
