@@ -1,8 +1,37 @@
 import Project from "./Project";
 import { PulseLoader } from "react-spinners";
+import Table from "../../components/protected/Table";
 import useAuth from "../../hooks/useAuth";
 import { useGetProjectsQuery } from "./projectsApiSlice";
 import { useNavigate } from "react-router-dom";
+
+const tableControls = [
+  {
+    title: "Image",
+    scope: "col",
+    colSpan: 1,
+  },
+  {
+    title: "Name",
+    scope: "col",
+    colSpan: 4,
+  },
+  {
+    title: "Description",
+    scope: "col",
+    colSpan: 2,
+  },
+  {
+    title: "Tech",
+    scope: "col",
+    colSpan: 4,
+  },
+  {
+    title: "Edit",
+    scope: "col",
+    colSpan: 1,
+  },
+];
 
 const ProjectsList = () => {
   const { isManager, isAdmin } = useAuth();
@@ -42,16 +71,7 @@ const ProjectsList = () => {
         >
           +
         </button>
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Tech</th>
-              <th scope="col">Edit</th>
-            </tr>
-          </thead>
-          <tbody>{tableContent}</tbody>
-        </table>
+        <Table tableContent={tableContent} tableControls={tableControls} />
       </>
     );
   }

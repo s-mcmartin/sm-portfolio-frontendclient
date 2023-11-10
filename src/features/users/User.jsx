@@ -1,5 +1,6 @@
 import { memo, useMemo } from "react";
 
+import TableRow from "../../components/protected/TableRow";
 import useAuth from "../../hooks/useAuth";
 import { useGetUsersQuery } from "./usersApiSlice";
 import { useNavigate } from "react-router-dom";
@@ -17,21 +18,25 @@ const User = ({ userId }) => {
     const handleEdit = () => navigate(`/admin/users/${userId}`);
     const userRolesString = user.roles.toString().replaceAll(",", ", ");
     const cellStatus = user.active ? "" : "";
-    return (
-      <tr>
-        <td className={`${cellStatus}`}>{user.username}</td>
-        <td className={`${cellStatus}`}>{userRolesString}</td>
-        <td>
-          <button
-            className="p-2 bg-indigo-500 rounded-md"
-            onClick={handleEdit}
-            disabled={!isManager || !isAdmin}
-          >
+    const tableCells = [
+      {
+        content: user.username,
+        colSpan: 4,
+      },
+      {
+        content: userRolesString,
+        colSpan: 5,
+      },
+      {
+        content: (
+          <button className="p-2 bg-indigo-500 rounded-md" onClick={handleEdit}>
             EDIT
           </button>
-        </td>
-      </tr>
-    );
+        ),
+        colSpan: 3,
+      },
+    ];
+    return <TableRow tableCells={tableCells} />;
   } else {
     return <p>No user found for ID: {userId}</p>;
   }

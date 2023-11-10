@@ -32,7 +32,14 @@ export const CustomMobileLink = ({ href, title, className = "", toggle }) => {
   );
 };
 
-const MobileNavbar = ({ mode, setMode, handleClick }) => {
+const MobileNavbar = ({
+  mode,
+  setMode,
+  handleClick,
+  isUser,
+  onClickLogout,
+}) => {
+  console.log(isUser);
   return (
     <motion.div
       className="min-w-[70vw] sm:min-w-[90vw]  justify-between items-center flex-col fixed top-1/2 left-1/2 -translate-x-1/2
@@ -67,6 +74,18 @@ py-32 bg-dark/90 dark:bg-light/75 rounded-lg z-50 backdrop-blur-md hidden lg:fle
           href="/contact"
           title="Contact"
         />
+        {!isUser ? (
+          <CustomMobileLink
+            toggle={handleClick}
+            className="ml-4 lg:m-0 lg:my-2"
+            href="/login"
+            title="Login"
+          />
+        ) : (
+          <button title="Logout" className="ml-4" onClick={onClickLogout}>
+            Logout
+          </button>
+        )}
       </nav>
       <nav
         className="flex items-center justify-center  mt-2

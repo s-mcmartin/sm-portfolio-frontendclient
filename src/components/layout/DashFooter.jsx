@@ -16,10 +16,13 @@ const DashFooter = () => {
     );
   }
   return (
-    <footer className="w-full flex justify-between items-center">
-      {goHomeButton}
-      <p>Current user: {username}</p>
-      <p>Status: {status}</p>
+    <footer className="flex justify-between items-center text-dark dark:text-light w-fit mb-8">
+      <p className="text-xl font-light px-4">
+        Current user: <span className="px-2 font-semibold">{username}</span>
+      </p>
+      <p className="text-xl font-light px-4">
+        Status: <span className="px-2 font-semibold">{status}</span>
+      </p>
     </footer>
   );
 };

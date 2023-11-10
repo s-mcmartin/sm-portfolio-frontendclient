@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
+import { AiOutlineHome } from "react-icons/ai";
 import useAuth from "../../hooks/useAuth";
 import { useEffect } from "react";
 import { useSendLogoutMutation } from "../../features/auth/authApiSlice";
@@ -15,18 +16,6 @@ const DashNav = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  const [sendLogout, { isLoading, isSuccess, isError, error }] =
-    useSendLogoutMutation();
-
-  useEffect(() => {
-    if (isSuccess) navigate("/admin");
-  }, [isSuccess, navigate]);
-
-  const onLogoutClicked = () => sendLogout();
-
-  if (isLoading) return <p>Logging Out...</p>;
-  if (isError) return <p>Error: {error.message}</p>;
-
   let adminClass = null;
   if (
     !ADMIN_REGEX.test(pathname) &&
@@ -38,24 +27,35 @@ const DashNav = () => {
     adminClass = "bg-yellow-200";
   }
 
-  const logoutButton = (
-    <button
-      className="bg-indigo-900 text-light p-2 rounded-md"
-      title="Logout"
-      onClick={onLogoutClicked}
-    >
-      LOGOUT
-    </button>
-  );
+  const AdminLink = ({ title, href }) => {
+    const { pathname } = useLocation();
+    return (
+      <Link
+        className={`uppercase font-bold text-2xl px-4 ${
+          pathname === href
+            ? "bg-primary dark:bg-primaryDark dark:text-dark text-light"
+            : "dark:text-light text-dark"
+        }`}
+        to={href}
+      >
+        {title}
+      </Link>
+    );
+  };
+
   return (
     <header
-      className={`w-full flex justify-between items-center space-x-4 ${adminClass}`}
+      className={`w-full flex justify-center my-8 items-center space-x-4 ${adminClass}`}
     >
-      <Link to="/admin/courses">Courses</Link>
-      <Link to="/admin/projects">Projects</Link>
-      {(isManager || isAdmin) && <Link to="/admin/contacts">Contacts</Link>}
-      {(isManager || isAdmin) && <Link to="/admin/users">Users</Link>}
-      {logoutButton}
+      <AdminLink href="/admin" title={"Dashboard"} />
+      <AdminLink href="/admin/courses" title="Courses" />
+      <AdminLink href="/admin/projects" title="Projects" />
+      {(isManager || isAdmin) && (
+        <AdminLink href="/admin/contacts" title="Contacts" />
+      )}
+      {(isManager || isAdmin) && (
+        <AdminLink href="/admin/users" title="Users" />
+      )}
     </header>
   );
 };

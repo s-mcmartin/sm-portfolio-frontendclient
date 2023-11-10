@@ -27,9 +27,9 @@ export const CustomNavLink = ({ href, title, className = "" }) => {
   );
 };
 
-const Navbar = ({ mode, setMode }) => {
+const Navbar = ({ mode, setMode, isUser, onClickLogout }) => {
   const { pathname } = useLocation();
-  console.log(pathname);
+
   return (
     <div className="w-full flex justify-between items-center lg:hidden">
       <nav className="flex items-center justify-center">
@@ -86,7 +86,13 @@ const Navbar = ({ mode, setMode }) => {
             <MoonIcon className={"fill-dark"} />
           )}
         </button>
-        <CustomNavLink href="/login" title="Login" className="ml-4" />
+        {!isUser ? (
+          <CustomNavLink href="/login" title="Login" className="ml-4" />
+        ) : (
+          <button title="Logout" className="ml-4" onClick={onClickLogout}>
+            Logout
+          </button>
+        )}
       </nav>
     </div>
   );

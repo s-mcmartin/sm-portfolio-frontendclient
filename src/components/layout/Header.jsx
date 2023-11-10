@@ -1,11 +1,18 @@
+import { useEffect, useState } from "react";
+
 import MobileNavbar from "./MobileNavbar";
 import Navbar from "./Navbar";
-import { useState } from "react";
+import useAuth from "../../hooks/useAuth";
+import { useSendLogoutMutation } from "../../features/auth/authApiSlice";
 import { useThemeSwitch } from "../../hooks/useThemeSwitch";
 
 const Header = () => {
   const [mode, setMode] = useThemeSwitch();
   const [isOpen, setIsOpen] = useState(false);
+  const [sendLogout, { isLoading, isSuccess, isError, error }] =
+    useSendLogoutMutation();
+
+  const { username } = useAuth();
 
   const handleClick = () => setIsOpen(!isOpen);
 
@@ -40,9 +47,20 @@ lg:px-16 relative z-1 md:px-12 sm:px-8 dark:bg-dark
         ></span>
       </button>
 
-      <Navbar mode={mode} setMode={setMode} />
+      <Navbar
+        mode={mode}
+        setMode={setMode}
+        isUser={username !== "" ? true : false}
+        onClickLogout={() => sendLogout()}
+      />
       {isOpen ? (
-        <MobileNavbar mode={mode} setMode={setMode} handleClick={handleClick} />
+        <MobileNavbar
+          mode={mode}
+          setMode={setMode}
+          handleClick={handleClick}
+          isUser={username !== "" ? true : false}
+          onClickLogout={() => sendLogout()}
+        />
       ) : null}
     </header>
   );

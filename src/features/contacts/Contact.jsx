@@ -1,3 +1,4 @@
+import TableRow from "../../components/protected/TableRow";
 import { memo } from "react";
 import { useGetContactsQuery } from "./contactsApiSlice";
 import { useNavigate } from "react-router-dom";
@@ -18,20 +19,38 @@ const Contact = ({ contactId }) => {
       hour: "numeric",
       minute: "numeric",
     });
-    return (
-      <tr>
-        <td className={``}>{created}</td>
-        <td className={``}>{contact.name}</td>
-        <td className={``}>{contact.email}</td>
-        <td className={``}>{contact.subject}</td>
-        <td className={``}>{contact.message}</td>
-        <td>
+
+    const tableCells = [
+      {
+        content: created,
+        colSpan: 2,
+      },
+      {
+        content: contact.name,
+        colSpan: 1,
+      },
+      {
+        content: contact.email,
+        colSpan: 2,
+      },
+      {
+        content: contact.subject,
+        colSpan: 2,
+      },
+      {
+        content: contact.message,
+        colSpan: 4,
+      },
+      {
+        content: (
           <button className="p-2 bg-indigo-500 rounded-md" onClick={handleEdit}>
             EDIT
           </button>
-        </td>
-      </tr>
-    );
+        ),
+        colSpan: 1,
+      },
+    ];
+    return <TableRow tableCells={tableCells} />;
   } else {
     return <p>No project found for ID: {contactId}</p>;
   }

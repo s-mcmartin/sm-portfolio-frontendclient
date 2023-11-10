@@ -1,6 +1,35 @@
 import Course from "./Course";
 import { PulseLoader } from "react-spinners";
+import Table from "./../../components/protected/Table";
 import { useGetCoursesQuery } from "./coursesApiSlice";
+
+const tableControls = [
+  {
+    title: "Organization",
+    scope: "col",
+    colSpan: 1,
+  },
+  {
+    title: "Name",
+    scope: "col",
+    colSpan: 4,
+  },
+  {
+    title: "Instructor",
+    scope: "col",
+    colSpan: 2,
+  },
+  {
+    title: "Tech",
+    scope: "col",
+    colSpan: 4,
+  },
+  {
+    title: "Edit",
+    scope: "col",
+    colSpan: 1,
+  },
+];
 
 const CourseList = () => {
   const {
@@ -25,16 +54,7 @@ const CourseList = () => {
       : null;
 
     content = (
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Tech</th>
-            <th scope="col">Edit</th>
-          </tr>
-        </thead>
-        <tbody>{tableContent}</tbody>
-      </table>
+      <Table tableContent={tableContent} tableControls={tableControls} />
     );
   }
   return content;

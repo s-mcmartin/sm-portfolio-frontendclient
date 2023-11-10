@@ -1,6 +1,5 @@
 import Footer from "./Footer";
 import Header from "./Header";
-import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
 
 //add Navbar and Footer here

@@ -4,13 +4,13 @@ import { Outlet } from "react-router-dom";
 
 const DashLayout = () => {
   return (
-    <>
+    <div className="flex flex-col w-full h-full items-center">
       <DashNav />
-      <div className="">
+      <DashFooter />
+      <div className="grow p-2">
         <Outlet />
       </div>
-      <DashFooter />
-    </>
+    </div>
   );
 };
 

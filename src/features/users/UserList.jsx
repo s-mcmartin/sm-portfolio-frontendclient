@@ -1,10 +1,23 @@
-import { Link, useNavigate } from "react-router-dom";
-
-import { PulseLoader } from "react-spinners";
+import Loading from "./../../components/layout/Loading";
+import Table from "../../components/protected/Table";
 import User from "./User";
-import useAuth from "../../hooks/useAuth";
 import { useGetUsersQuery } from "./usersApiSlice";
+import { useNavigate } from "react-router-dom";
 
+const tableControls = [
+  {
+    title: "Username",
+    colSpan: 4,
+  },
+  {
+    title: "Roles",
+    colSpan: 5,
+  },
+  {
+    title: "Edit",
+    colSpan: 3,
+  },
+];
 const UserList = () => {
   const {
     data: users,
@@ -19,7 +32,7 @@ const UserList = () => {
   const navigate = useNavigate();
   let content;
   if (isLoading) {
-    content = <PulseLoader />;
+    content = <Loading />;
   }
   if (isError) {
     content = <p className="bg-red-200 text-light">{error?.data?.message}</p>;
@@ -40,16 +53,7 @@ const UserList = () => {
         >
           +
         </button>
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Username</th>
-              <th scope="col">Roles</th>
-              <th scope="col">Edit</th>
-            </tr>
-          </thead>
-          <tbody>{tableContent}</tbody>
-        </table>
+        <Table tableContent={tableContent} tableControls={tableControls} />
       </>
     );
   }

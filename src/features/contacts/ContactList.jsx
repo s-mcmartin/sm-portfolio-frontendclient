@@ -1,6 +1,34 @@
 import Contact from "./Contact";
 import { PulseLoader } from "react-spinners";
+import Table from "../../components/protected/Table";
 import { useGetContactsQuery } from "./contactsApiSlice";
+
+const tableControls = [
+  {
+    title: "Created At",
+    colSpan: 2,
+  },
+  {
+    title: "Name",
+    colSpan: 1,
+  },
+  {
+    title: "Email",
+    colSpan: 2,
+  },
+  {
+    title: "Subject",
+    colSpan: 2,
+  },
+  {
+    title: "Message",
+    colSpan: 4,
+  },
+  {
+    title: "Edit",
+    colSpan: 1,
+  },
+];
 
 const ContactList = () => {
   const {
@@ -28,20 +56,10 @@ const ContactList = () => {
       : null;
 
     content = (
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Subject</th>
-            <th scope="col">Message</th>
-            <th scope="col">Edit</th>
-          </tr>
-        </thead>
-        <tbody>{tableContent}</tbody>
-      </table>
+      <Table tableContent={tableContent} tableControls={tableControls} />
     );
   }
+
   return content;
 };
 
