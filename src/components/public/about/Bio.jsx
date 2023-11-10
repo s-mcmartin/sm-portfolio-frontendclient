@@ -1,7 +1,6 @@
-import AnimatedUnderline from "../../transitions/AnimatedUnderline";
-import React from "react";
+import AnimatedUnderline from "../../animations/AnimatedUnderline";
 import { motion } from "framer-motion";
-import profile from "../../../assets/images/profile/Me.png";
+import profile from "../../../assets/images/Me.png";
 
 const Bio = () => {
   return (
