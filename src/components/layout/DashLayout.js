@@ -7,7 +7,7 @@ const DashLayout = () => {
     <div className="flex flex-col w-full h-full items-center">
       <DashNav />
       <DashFooter />
-      <div className="grow p-2">
+      <div className="h-fit">
         <Outlet />
       </div>
     </div>

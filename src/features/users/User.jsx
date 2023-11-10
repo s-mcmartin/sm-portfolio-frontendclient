@@ -17,7 +17,7 @@ const User = ({ userId }) => {
   if (user) {
     const handleEdit = () => navigate(`/admin/users/${userId}`);
     const userRolesString = user.roles.toString().replaceAll(",", ", ");
-    const cellStatus = user.active ? "" : "";
+
     const tableCells = [
       {
         content: user.username,

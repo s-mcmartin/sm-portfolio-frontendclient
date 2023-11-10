@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 //add Navbar and Footer here
 const Layout = () => {
   return (
-    <section className="flex flex-wrap h-screen">
+    <section className="flex flex-wrap h-full">
       <header className="h-fit w-full">
         <Header />
       </header>
