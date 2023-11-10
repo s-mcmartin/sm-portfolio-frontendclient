@@ -37,9 +37,7 @@ const Projects = () => {
   if (isError) content = <Error content={error.error} />;
   if (isSuccess) {
     const { ids, entities } = projects;
-    const featuredProjects = ids.filter(
-      (projectId) => entities[projectId].featured === "true"
-    );
+
     const selectedProjects = ids.filter((projectId) =>
       selected.every((tool) => entities[projectId].tech.included(tool))
     );
@@ -53,6 +51,9 @@ const Projects = () => {
       }
     });
     const projectsArray = ids.map((projectId) => entities[projectId]);
+    const featuredProjects = projectsArray.filter(
+      (project) => project.featured === "true"
+    );
     const selectedProjectsLength = selectedProjects?.length;
     content = (
       <>

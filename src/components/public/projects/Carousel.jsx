@@ -70,12 +70,12 @@ const Carousel = ({ projects }) => {
               }}
             >
               <DetailCard
-                project={
+                projectId={
                   projects[
                     `${
                       currentIndex > 0 ? currentIndex - 1 : projects.length - 1
                     }`
-                  ]
+                  ].id
                 }
               />
             </motion.div>
@@ -94,7 +94,7 @@ const Carousel = ({ projects }) => {
                   backgroundImage: `url(${projects[currentIndex].image})`,
                 }}
               >
-                <DetailCard project={projects[currentIndex]} />
+                <DetailCard projectId={projects[currentIndex].id} />
               </motion.div>
             </AnimatePresence>
           </div>
