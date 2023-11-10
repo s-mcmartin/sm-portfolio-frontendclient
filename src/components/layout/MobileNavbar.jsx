@@ -13,21 +13,23 @@ export const CustomMobileLink = ({ href, title, className = "", toggle }) => {
     navigate(href);
   };
 
-  <button
-    className={`${className} rounded relative group lg:text-light lg:dark:text-dark`}
-    onClick={handleClick}
-  >
-    {title}
-    <span
-      className={`
+  return (
+    <button
+      className={`${className} rounded relative group lg:text-light lg:dark:text-dark`}
+      onClick={handleClick}
+    >
+      {title}
+      <span
+        className={`
             inline-block h-[1px] bg-dark absolute left-0 -bottom-0.5 
             group-hover:w-full transition-[width] ease duration-300 dark:bg-light
             ${pathname === href ? "w-full" : " w-0"} lg:bg-light lg:dark:bg-dark
             `}
-    >
-      &nbsp;
-    </span>
-  </button>;
+      >
+        &nbsp;
+      </span>
+    </button>
+  );
 };
 
 const MobileNavbar = ({ mode, setMode, handleClick }) => {

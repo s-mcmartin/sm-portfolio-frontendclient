@@ -1,4 +1,5 @@
 import Footer from "./Footer";
+import Header from "./Header";
 import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
 
@@ -7,7 +8,7 @@ const Layout = () => {
   return (
     <section className="flex flex-wrap h-screen">
       <header className="h-fit w-full">
-        <Navbar />
+        <Header />
       </header>
       <main className="grow w-full h-full bg-light dark:bg-dark">
         <Outlet />

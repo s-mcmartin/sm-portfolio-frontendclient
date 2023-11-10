@@ -1,11 +1,11 @@
-import MobileNavbar from "./MobileNavBar";
+import MobileNavbar from "./MobileNavbar";
 import Navbar from "./Navbar";
 import { useState } from "react";
 import { useThemeSwitch } from "../../hooks/useThemeSwitch";
 
 const Header = () => {
   const [mode, setMode] = useThemeSwitch();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const handleClick = () => setIsOpen(!isOpen);
 
