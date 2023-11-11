@@ -4,6 +4,8 @@ import {
 } from "./contactsApiSlice";
 import { useEffect, useState } from "react";
 
+import AnimatedText from "../../components/animations/AnimatedText";
+import Error from "../../components/layout/Error";
 import { useNavigate } from "react-router-dom";
 
 const EditContactForm = ({ contact }) => {
@@ -60,92 +62,117 @@ const EditContactForm = ({ contact }) => {
   let canSave =
     [name, email, subject, message, completed].every(Boolean) && !isLoading;
 
-  const errClass = isError || isDelError ? "errmsg" : "offscreen";
-
-  const errContent = (error?.data?.message || delerror?.data?.message) ?? "";
-
   const content = (
     <>
-      <p className={errClass}>{errContent}</p>
+      {isError && <Error text={error.error} />}
 
-      <form className="form" onSubmit={(e) => e.preventDefault()}>
-        <div className="">
-          <h2>Edit Contact</h2>
-          <div className="form__action-buttons">
-            <button
-              className=""
-              title="Save"
-              onClick={onSaveContactClicked}
-              disabled={!canSave}
-            >
-              SAVE
-            </button>
-            <button
-              className=""
-              title="Delete"
-              onClick={onDeleteContactClicked}
-            >
-              DELETE
-            </button>
-          </div>
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="flex flex-col px-12 pb-12 rounded-lg "
+      >
+        <div className="w-full flex flex-wrap justify-center items-center space-x-4">
+          <AnimatedText text="Edit Contact" className="!text-4xl text-center" />
         </div>
-        <label htmlFor="name">Name:</label>
-        <input
-          className=""
-          id="name"
-          name="name"
-          type="text"
-          autoComplete="off"
-          value={name}
-          onChange={onNameChanged}
-        />
-        <label className="" htmlFor="email">
-          Email:
-        </label>
-        <input
-          className=""
-          id="email"
-          name="email"
-          type="email"
-          autoComplete="off"
-          value={email}
-          onChange={onEmailChanged}
-        />
-        <label className="" htmlFor="subject">
-          Subject:
-        </label>
-        <input
-          className=""
-          id="subject"
-          name="subject"
-          type="text"
-          autoComplete="off"
-          value={subject}
-          onChange={onSubjectChanged}
-        />
-        <label className="" htmlFor="message">
-          Message:
-        </label>
-        <input
-          className=""
-          id="message"
-          name="message"
-          type="text"
-          autoComplete="off"
-          value={message}
-          onChange={onMessageChanged}
-        />
-        <label className="" htmlFor="completed">
-          Featured:
+        <div className="flex items-center">
+          <label
+            htmlFor="name"
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+          >
+            Name:
+          </label>
           <input
-            className=""
-            id="completed"
-            name="completed"
-            type="checkbox"
-            checked={completed}
-            onChange={onCompletedChanged}
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
+            id="name"
+            name="name"
+            type="text"
+            autoComplete="off"
+            value={name}
+            onChange={onNameChanged}
           />
-        </label>
+        </div>
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="email"
+          >
+            Email:
+          </label>
+          <input
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="off"
+            value={email}
+            onChange={onEmailChanged}
+          />
+        </div>
+
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="subject"
+          >
+            Subject:
+          </label>
+          <input
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
+            id="subject"
+            name="subject"
+            type="text"
+            autoComplete="off"
+            value={subject}
+            onChange={onSubjectChanged}
+          />
+        </div>
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="message"
+          >
+            Message:
+          </label>
+          <input
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
+            id="message"
+            name="message"
+            type="text"
+            autoComplete="off"
+            value={message}
+            onChange={onMessageChanged}
+          />
+        </div>
+        <div className="flex items-center mb-4">
+          <label
+            className="w-full text-2xl font-semibold mr-4 dark:text-light"
+            htmlFor="completed"
+          >
+            Featured:
+            <input
+              className="px-2 mx-4 text-xl my-1"
+              id="completed"
+              name="completed"
+              type="checkbox"
+              checked={completed}
+              onChange={onCompletedChanged}
+            />
+          </label>
+        </div>
+        <button
+          className="p-2 bg-indigo-500 rounded-md mb-4 shadow-black shadow-md text-xl text-dark dark:text-light"
+          title="Save"
+          onClick={onSaveContactClicked}
+          disabled={!canSave}
+        >
+          SAVE
+        </button>
+        <button
+          className="p-2 bg-red-500 rounded-md shadow-black shadow-md text-xl text-dark dark:text-light "
+          title="Delete"
+          onClick={onDeleteContactClicked}
+        >
+          DELETE
+        </button>
       </form>
     </>
   );

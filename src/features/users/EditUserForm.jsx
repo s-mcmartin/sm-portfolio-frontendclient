@@ -1,6 +1,8 @@
 import { useDeleteUserMutation, useUpdateUserMutation } from "./usersApiSlice";
 import { useEffect, useState } from "react";
 
+import AnimatedText from "../../components/animations/AnimatedText";
+import Error from "../../components/layout/Error";
 import { ROLES } from "../../config/roles";
 import { useNavigate } from "react-router-dom";
 
@@ -97,84 +99,99 @@ const EditUserForm = ({ user }) => {
 
   const content = (
     <>
-      <p className={errClass}>{errContent}</p>
+      {isError && <Error text={error.error} />}
 
-      <form className="form" onSubmit={(e) => e.preventDefault()}>
-        <div className="form__title-row">
-          <h2>Edit User</h2>
-          <div className="form__action-buttons">
-            <button
-              className="icon-button"
-              title="Save"
-              onClick={onSaveUserClicked}
-              disabled={!canSave}
-            >
-              SAVE
-            </button>
-            <button
-              className="icon-button"
-              title="Delete"
-              onClick={onDeleteUserClicked}
-            >
-              DELETE
-            </button>
-          </div>
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="flex flex-col px-12 pb-12 rounded-lg "
+      >
+        <div className="w-full flex flex-wrap justify-center items-center space-x-4">
+          <AnimatedText text="Edit User" className="!text-4xl text-center" />
         </div>
-        <label className="form__label" htmlFor="username">
-          Username: <span className="nowrap">[3-20 letters]</span>
-        </label>
-        <input
-          className={`form__input ${validUserClass}`}
-          id="username"
-          name="username"
-          type="text"
-          autoComplete="off"
-          value={username}
-          onChange={onUsernameChanged}
-        />
-
-        <label className="form__label" htmlFor="password">
-          Password: <span className="nowrap">[empty = no change]</span>{" "}
-          <span className="nowrap">[4-12 chars incl. !@#$%]</span>
-        </label>
-        <input
-          className={`form__input ${validPwdClass}`}
-          id="password"
-          name="password"
-          type="password"
-          value={password}
-          onChange={onPasswordChanged}
-        />
-
-        <label
-          className="form__label form__checkbox-container"
-          htmlFor="user-active"
-        >
-          ACTIVE:
+        <div className="flex items-center flex-wrap">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="username"
+          >
+            Username: <span className="nowrap">[3-20 letters]</span>
+          </label>
           <input
-            className="form__checkbox"
-            id="user-active"
-            name="user-active"
-            type="checkbox"
-            checked={active}
-            onChange={onActiveChanged}
+            className="w-full px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
+            id="username"
+            name="username"
+            type="text"
+            autoComplete="off"
+            value={username}
+            onChange={onUsernameChanged}
           />
-        </label>
-
-        <label className="form__label" htmlFor="roles">
-          ASSIGNED ROLES:
-        </label>
-        <select
-          id="roles"
-          name="roles"
-          className={`form__select ${validRolesClass}`}
-          multiple={true}
-          size="3"
-          value={roles}
-          onChange={onRolesChanged}
+        </div>
+        <div className="flex items-center flex-wrap">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="password"
+          >
+            Password: <span className="nowrap">[empty = no change]</span>{" "}
+            <span className="nowrap">[4-12 chars incl. !@#$%]</span>
+          </label>
+          <input
+            className="w-full px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
+            id="password"
+            name="password"
+            type="password"
+            value={password}
+            onChange={onPasswordChanged}
+          />
+        </div>
+        <div className="flex items-center">
+          <label
+            className="text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="user-active"
+          >
+            ACTIVE:
+            <input
+              className=" px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
+              id="user-active"
+              name="user-active"
+              type="checkbox"
+              checked={active}
+              onChange={onActiveChanged}
+            />
+          </label>
+        </div>
+        <div className="flex flex-wrap items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="roles"
+          >
+            ASSIGNED ROLES:
+          </label>
+          <select
+            id="roles"
+            name="roles"
+            className="w-1/2 p-1 bg-light"
+            multiple={true}
+            size="3"
+            value={roles}
+            onChange={onRolesChanged}
+          >
+            {options}
+          </select>
+        </div>
+        <button
+          className="mt-4 p-2 bg-indigo-500 rounded-md mb-4 shadow-black shadow-md text-xl text-dark dark:text-light"
+          title="Save"
+          onClick={onSaveUserClicked}
+          disabled={!canSave}
         >
-          {options}
-        </select>
+          SAVE
+        </button>
+        <button
+          className="p-2 bg-red-500 rounded-md shadow-black shadow-md text-xl text-dark dark:text-light "
+          title="Delete"
+          onClick={onDeleteUserClicked}
+        >
+          DELETE
+        </button>
       </form>
     </>
   );

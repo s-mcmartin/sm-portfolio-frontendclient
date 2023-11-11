@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
+import Error from "../../layout/Error";
+import Loading from "../../layout/Loading";
 import { RingLoader } from "react-spinners";
 import emailjs from "@emailjs/browser";
 import { useAddNewContactMutation } from "../../../features/contacts/contactsApiSlice";
 import useTitle from "../../../hooks/useTitle";
 
-const ContactForm = ({ setShowSuccess }) => {
+const ContactForm = ({ handleToggleSuccess }) => {
   useTitle("SM_Portfolio: Client Contact Form");
   const form = useRef();
 
@@ -23,7 +25,7 @@ const ContactForm = ({ setShowSuccess }) => {
       setEmail("");
       setSubject("");
       setMessage("");
-      setShowSuccess(true);
+      handleToggleSuccess();
     }
   }, [isSuccess]);
 
@@ -67,8 +69,8 @@ const ContactForm = ({ setShowSuccess }) => {
 
   return (
     <>
-      {isLoading && <RingLoader />}
-      {isError && <p>{error?.data?.message}</p>}
+      {isLoading && <Loading />}
+      {isError && <Error text={error.error} />}
       <form onSubmit={handleSubmit} ref={form} className="">
         <h2 className="text-light text-2xl dark:text-dark mb-4">
           Send me a message!
@@ -127,7 +129,7 @@ const ContactForm = ({ setShowSuccess }) => {
             id="message"
             name="message"
             type="text"
-            rows="12"
+            rows="6"
             value={message}
             onChange={handleChangeMessage}
           />

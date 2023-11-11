@@ -16,17 +16,6 @@ const DashNav = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  let adminClass = null;
-  if (
-    !ADMIN_REGEX.test(pathname) &&
-    !CONTACTS_REGEX.test(pathname) &&
-    !USERS_REGEX.test(pathname) &&
-    !PROJECTS_REGEX.test(pathname) &&
-    !COURSES_REGEX.test(pathname)
-  ) {
-    adminClass = "bg-yellow-200";
-  }
-
   const AdminLink = ({ title, href }) => {
     const { pathname } = useLocation();
     return (
@@ -45,7 +34,7 @@ const DashNav = () => {
 
   return (
     <header
-      className={`w-full flex justify-center my-8 items-center space-x-4 ${adminClass}`}
+      className={`w-full flex justify-center my-8 items-center space-x-4`}
     >
       <AdminLink href="/admin" title={"Dashboard"} />
       <AdminLink href="/admin/courses" title="Courses" />

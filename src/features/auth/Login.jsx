@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import AnimatedText from "../../components/animations/AnimatedText";
+import Loading from "../../components/layout/Loading";
 import { PulseLoader } from "react-spinners";
 import { setCredentials } from "./authSlice";
 import { useDispatch } from "react-redux";
@@ -64,10 +65,10 @@ const Login = () => {
 
   const errClass = errMsg ? "bg-red-300" : "hidden";
 
-  if (isLoading) return <PulseLoader />;
+  if (isLoading) return <Loading />;
 
   const content = (
-    <section className="">
+    <section className="h-full mb-24">
       <header>
         <AnimatedText text="Login" />
       </header>

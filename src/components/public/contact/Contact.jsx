@@ -11,10 +11,14 @@ import useTitle from "../../../hooks/useTitle";
 
 const Contact = () => {
   useTitle("SM_Portfolio: Contact Page");
-  const [showSuccess, setShowSuccess] = useState(true);
+  const [showSuccess, setShowSuccess] = useState(false);
+  console.log(showSuccess);
+  const handleToggleSuccess = () => {
+    setShowSuccess((prev) => !prev);
+  };
+
   return (
     <>
-      {showSuccess && <SuccessMessage setShowSuccess={setShowSuccess} />}
       <TransitionEffect />
       <main
         className={`mb-16 flex w-full flex-col items-center justify-center dark:text-light`}
@@ -54,7 +58,11 @@ const Contact = () => {
               </div>
             </div>
             <div className="w-1/2 h-fit shadow-lg p-4 shadow-black rounded-lg  md:w-full md:mx-8 bg-dark/90 text-dark/75 dark:bg-light/90 dark:text-light">
-              <ContactForm />
+              {!showSuccess ? (
+                <ContactForm handleToggleSuccess={handleToggleSuccess} />
+              ) : (
+                <SuccessMessage handleToggleSuccess={handleToggleSuccess} />
+              )}
             </div>
           </section>
         </MainSection>

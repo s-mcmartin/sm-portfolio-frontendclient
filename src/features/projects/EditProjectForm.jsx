@@ -4,6 +4,8 @@ import {
 } from "./projectsApiSlice";
 import { useEffect, useState } from "react";
 
+import AnimatedText from "../../components/animations/AnimatedText";
+import Error from "../../components/layout/Error";
 import { useNavigate } from "react-router-dom";
 
 const EditProjectForm = ({ project }) => {
@@ -62,33 +64,26 @@ const EditProjectForm = ({ project }) => {
   };
 
   const canSave = [name !== ""].every(Boolean) && !isLoading;
-  const errContent = (error?.data?.message || delError?.data?.message) ?? "";
+
   return (
     <>
-      <p>{errContent}</p>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <div>
-          <h2>Edit Project</h2>
-          <div>
-            <button
-              className="p-2 bg-indigo-500 rounded-md"
-              title="Save"
-              onClick={onSaveProjectClicked}
-              disabled={!canSave}
-            >
-              SAVE
-            </button>
-            <button
-              className="ml-4 p-2 bg-red-500 rounded-md text-light"
-              title="Delete"
-              onClick={onDeleteProjectClicked}
-            >
-              DELETE
-            </button>
-          </div>
-          <label htmlFor="name">Name:</label>
+      {isError && <Error text={error.error} />}
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="flex flex-col px-12 pb-12 rounded-lg "
+      >
+        <div className="w-full flex flex-wrap justify-center items-center space-x-4">
+          <AnimatedText text="Edit Project" className="!text-4xl text-center" />
+        </div>
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="name"
+          >
+            Name:
+          </label>
           <input
-            className=""
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
             id="name"
             name="name"
             type="text"
@@ -96,11 +91,16 @@ const EditProjectForm = ({ project }) => {
             value={name}
             onChange={onNameChanged}
           />
-          <label className="" htmlFor="image">
+        </div>
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="image"
+          >
             Image:
           </label>
           <input
-            className=""
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
             id="image"
             name="image"
             type="text"
@@ -108,11 +108,16 @@ const EditProjectForm = ({ project }) => {
             value={image}
             onChange={onImageChanged}
           />
-          <label className="" htmlFor="description">
+        </div>
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="description"
+          >
             Description:
           </label>
           <input
-            className=""
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
             id="description"
             name="description"
             type="text"
@@ -120,11 +125,16 @@ const EditProjectForm = ({ project }) => {
             value={description}
             onChange={onDescriptionChanged}
           />
-          <label className="" htmlFor="tech">
+        </div>
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="tech"
+          >
             Tech:
           </label>
           <input
-            className=""
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
             id="tech"
             name="tech"
             type="text"
@@ -132,12 +142,16 @@ const EditProjectForm = ({ project }) => {
             value={tech}
             onChange={onTechChanged}
           />
-
-          <label className="" htmlFor="github">
+        </div>
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="github"
+          >
             Github:
           </label>
           <input
-            className=""
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
             id="github"
             name="github"
             type="text"
@@ -145,11 +159,16 @@ const EditProjectForm = ({ project }) => {
             value={github}
             onChange={onGithubChanged}
           />
-          <label className="" htmlFor="website">
+        </div>
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="website"
+          >
             Website:
           </label>
           <input
-            className=""
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
             id="website"
             name="website"
             type="text"
@@ -158,17 +177,37 @@ const EditProjectForm = ({ project }) => {
             onChange={onWebsiteChanged}
           />
         </div>
-        <label className="" htmlFor="featured">
-          Featured:
-          <input
-            className=""
-            id="featured"
-            name="featured"
-            type="checkbox"
-            checked={featured === "true" ? true : false}
-            onChange={onFeaturedChanged}
-          />
-        </label>
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="featured"
+          >
+            Featured:
+            <input
+              className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
+              id="featured"
+              name="featured"
+              type="checkbox"
+              checked={featured === "true" ? true : false}
+              onChange={onFeaturedChanged}
+            />
+          </label>
+        </div>
+        <button
+          className="p-2 bg-indigo-500 rounded-md mb-4 shadow-black shadow-md text-xl text-dark dark:text-light"
+          title="Save"
+          onClick={onSaveProjectClicked}
+          disabled={!canSave}
+        >
+          SAVE
+        </button>
+        <button
+          className="p-2 bg-red-500 rounded-md shadow-black shadow-md text-xl text-dark dark:text-light "
+          title="Delete"
+          onClick={onDeleteProjectClicked}
+        >
+          DELETE
+        </button>
       </form>
     </>
   );
