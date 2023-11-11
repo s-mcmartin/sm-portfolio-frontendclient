@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import AnimatedText from "../../components/animations/AnimatedText";
+import Error from "../../components/layout/Error";
 import { useAddNewCourseMutation } from "./coursesApiSlice";
 import { useNavigate } from "react-router-dom";
 
@@ -60,22 +62,24 @@ const NewCourseForm = () => {
 
   const content = (
     <>
-      <p className={errClass}>{error?.data?.message}</p>
-      <form onSubmit={onSaveCourseClicked}>
-        <div>
-          <h2>New Course</h2>
-          <div>
-            <button
-              className="p-2 bg-indigo-500 rounded-md"
-              title="Save"
-              disabled={!canSave}
-            >
-              SAVE
-            </button>
-          </div>
-          <label htmlFor="name">Name:</label>
+      {isError && <Error text={error.error} />}
+
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="flex flex-col px-12 pb-12 rounded-lg "
+      >
+        <div className="w-full flex flex-wrap justify-center items-center space-x-4">
+          <AnimatedText text="New Course" className="!text-4xl text-center" />
+        </div>
+        <div className="flex items-center">
+          <label
+            htmlFor="name"
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+          >
+            Name:
+          </label>
           <input
-            className=""
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
             id="name"
             name="name"
             type="text"
@@ -83,11 +87,16 @@ const NewCourseForm = () => {
             value={name}
             onChange={onNameChanged}
           />
-          <label className="" htmlFor="instructor">
+        </div>
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="instructor"
+          >
             Instructor:
           </label>
           <input
-            className=""
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
             id="instructor"
             name="instructor"
             type="text"
@@ -95,11 +104,16 @@ const NewCourseForm = () => {
             value={instructor}
             onChange={onInstructorChanged}
           />
-          <label className="" htmlFor="description">
+        </div>{" "}
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="description"
+          >
             Description:
           </label>
           <input
-            className=""
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
             id="description"
             name="description"
             type="text"
@@ -107,11 +121,16 @@ const NewCourseForm = () => {
             value={description}
             onChange={onDescriptionChanged}
           />
-          <label className="" htmlFor="tech">
+        </div>{" "}
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="tech"
+          >
             Tech:
           </label>
           <input
-            className=""
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
             id="tech"
             name="tech"
             type="text"
@@ -119,12 +138,16 @@ const NewCourseForm = () => {
             value={tech}
             onChange={onTechChanged}
           />
-
-          <label className="" htmlFor="organization">
+        </div>{" "}
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="organization"
+          >
             Organization:
           </label>
           <input
-            className=""
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
             id="organization"
             name="organization"
             type="text"
@@ -132,11 +155,16 @@ const NewCourseForm = () => {
             value={organization}
             onChange={onOrganizationChanged}
           />
-          <label className="" htmlFor="courseLink">
+        </div>{" "}
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="courseLink"
+          >
             Course URL:
           </label>
           <input
-            className=""
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
             id="courseLink"
             name="courseLink"
             type="text"
@@ -144,18 +172,31 @@ const NewCourseForm = () => {
             value={courseLink}
             onChange={onCourseLinkChanged}
           />
+        </div>{" "}
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="featured"
+          >
+            Featured:
+            <input
+              className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
+              id="featured"
+              name="featured"
+              type="checkbox"
+              checked={featured}
+              onChange={onFeaturedChanged}
+            />
+          </label>
         </div>
-        <label className="" htmlFor="featured">
-          Featured:
-          <input
-            className=""
-            id="featured"
-            name="featured"
-            type="checkbox"
-            checked={featured}
-            onChange={onFeaturedChanged}
-          />
-        </label>
+        <button
+          className="mt-4 p-2 bg-indigo-500 rounded-md mb-4 shadow-black shadow-md text-xl text-dark dark:text-light"
+          title="Save"
+          onClick={onSaveCourseClicked}
+          disabled={!canSave}
+        >
+          SAVE
+        </button>
       </form>
     </>
   );

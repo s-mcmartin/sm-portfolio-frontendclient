@@ -9,7 +9,7 @@ const Layout = () => {
       <header className="h-fit w-full">
         <Header />
       </header>
-      <main className="grow w-full h-full bg-light dark:bg-dark">
+      <main className="grow w-full min-h-screen bg-light dark:bg-dark">
         <Outlet />
       </main>
       <footer className="h-fit w-full">

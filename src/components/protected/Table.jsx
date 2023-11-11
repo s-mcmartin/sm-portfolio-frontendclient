@@ -2,7 +2,7 @@ import React from "react";
 
 const Table = ({ tableContent, tableControls }) => {
   return (
-    <table>
+    <table className="mb-24 border-b-8 border-primary dark:border-primaryDark">
       <thead>
         <tr className="grid grid-cols-12 w-full bg-primary dark:bg-primaryDark text-xl">
           {tableControls.map((control) => (

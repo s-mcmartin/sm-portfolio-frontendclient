@@ -39,15 +39,15 @@ const CourseFeatureCard = ({ course }) => {
           >
             <div className="w-full h-full flip-card-front shadow-sm shadow-black p-2 flex flex-col justify-center items-center space-y-2 rounded-lg bg-dark text-light dark:text-dark dark:bg-light">
               <a
-                href="#"
-                className="text-3xl leading-snug font-semibold hover:underline text-center xs:text-lg"
+                href="_blank"
+                className="text-3xl leading-snug font-semibold hover:underline text-center xs:text-lg subpixel-antialiased"
               >
                 {course?.name}
               </a>
-              <h2 className="hover:underline cursor-pointer xs:text-sm text-2xl">
+              <h2 className="hover:underline cursor-pointer xs:text-sm text-2xl subpixel-antialiased">
                 {course?.organization}
               </h2>
-              <h2 className="hover:underline cursor-pointer xs:text-sm text-2xl">
+              <h2 className="hover:underline cursor-pointer xs:text-sm text-2xl subpixel-antialiased">
                 {course?.instructor}
               </h2>
             </div>
@@ -60,14 +60,14 @@ const CourseFeatureCard = ({ course }) => {
             </button>
 
             <div className="w-full h-full flip-card-back shadow-sm shadow-black p-2 flex flex-col justify-start space-y-2 rounded-lg bg-dark text-light overflow-auto dark:bg-light dark:text-dark">
-              <p className="text-2xl text-light dark:text-dark italic px-2 pt-6">
+              <p className="text-2xl text-light dark:text-dark italic px-2 pt-6 subpixel-antialiased">
                 Topics covered in this course:
               </p>
-              <ul className="p-2 flex flex-wrap ">
+              <ul className="p-2 flex flex-wrap subpixel-antialiased">
                 {course?.tech?.map((tool) => (
                   <li
                     key={tool}
-                    className="text-light dark:text-dark mx-1 text-lg"
+                    className="text-light dark:text-dark mx-1 text-lg antialiased"
                   >
                     * {tool}
                   </li>
@@ -101,12 +101,12 @@ const FeaturedCourses = ({ courses }) => {
           transition={{ duration: 0.5, type: "spring" }}
           className="flex justify-between text-xl gap-4 w-full lg:flex-col"
         >
-          <h3 className="font-bold">BA, Psychology</h3>
-          <span className="">Saint Leo University | Dade City, FL</span>
-          <span className="italic">Magna Cum Laude</span>
+          <h3 className="font-bold text-2xl">BA, Psychology</h3>
+          <span className="text-2xl">Saint Leo University | Dade City, FL</span>
+          <span className="italic text-2xl">Magna Cum Laude</span>
         </motion.div>
       </article>
-      <div className="grid grid-cols-2 gap-4 lg:flex lg:flex-col w-full lg:items-center lg:gap-x-0">
+      <div className="grid grid-cols-2 gap-x-4 gap-y-2 lg:flex lg:flex-col w-full lg:items-center lg:gap-x-0">
         {featuredCourses?.map((course) => (
           <CourseFeatureCard key={course._id} course={course} />
         ))}

@@ -1,6 +1,9 @@
 import Course from "./Course";
+import Error from "../../components/layout/Error";
+import Loading from "../../components/layout/Loading";
 import { PulseLoader } from "react-spinners";
 import Table from "./../../components/protected/Table";
+import TableHeading from "../../components/protected/TableHeading";
 import { useGetCoursesQuery } from "./coursesApiSlice";
 
 const tableControls = [
@@ -41,10 +44,10 @@ const CourseList = () => {
   } = useGetCoursesQuery();
   let content;
   if (isLoading) {
-    content = <PulseLoader />;
+    content = <Loading />;
   }
   if (isError) {
-    content = <p className="bg-red-200 text-light">{error?.data?.message}</p>;
+    content = <Error text={error.error} />;
   }
   if (isSuccess) {
     const { ids } = courses;
@@ -54,7 +57,10 @@ const CourseList = () => {
       : null;
 
     content = (
-      <Table tableContent={tableContent} tableControls={tableControls} />
+      <>
+        <TableHeading type="Course" text="Course List" />
+        <Table tableContent={tableContent} tableControls={tableControls} />
+      </>
     );
   }
   return content;

@@ -1,6 +1,8 @@
 import Contact from "./Contact";
+import Loading from "./../../components/layout/Loading";
 import { PulseLoader } from "react-spinners";
 import Table from "../../components/protected/Table";
+import TableHeading from "../../components/protected/TableHeading";
 import { useGetContactsQuery } from "./contactsApiSlice";
 
 const tableControls = [
@@ -40,7 +42,7 @@ const ContactList = () => {
   } = useGetContactsQuery();
   let content;
   if (isLoading) {
-    content = <PulseLoader />;
+    content = <Loading />;
   }
   if (isError) {
     content = <p className="bg-red-200 text-light">{error?.data?.message}</p>;
@@ -56,7 +58,10 @@ const ContactList = () => {
       : null;
 
     content = (
-      <Table tableContent={tableContent} tableControls={tableControls} />
+      <>
+        <TableHeading type="Contact" text="Contact List" />
+        <Table tableContent={tableContent} tableControls={tableControls} />
+      </>
     );
   }
 

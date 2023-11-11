@@ -3,6 +3,7 @@ import { easeInOut, motion } from "framer-motion";
 
 import AnimatedText from "../../animations/AnimatedText";
 import FeaturedCourses from "./FeaturedCourses";
+import FeaturedCourses2 from "./FeaturedCourses2";
 import { useGetCoursesQuery } from "../../../features/courses/coursesApiSlice";
 import { useState } from "react";
 
@@ -33,7 +34,7 @@ const CourseCard = ({ course }) => {
         >
           <div className="w-full h-full flip-card-front shadow-sm shadow-black p-1">
             <a
-              href="#"
+              href="_blank"
               className="text-xs leading-snug font-semibold dark:text-light hover:dark:text-primaryDark"
             >
               {course.name}
@@ -71,7 +72,7 @@ const CourseList = ({ org, index, courses }) => {
         initial={{ y: 50 }}
         whileInView={{ y: 0 }}
         transition={{ duration: 0.5, type: "spring" }}
-        className="w-full text-2xl font-bold text-dark/75 dark:text-light/75"
+        className="w-full text-4xl font-bold text-dark/75 dark:text-light/75"
       >
         {org}
       </motion.h2>
@@ -92,7 +93,7 @@ const CourseList = ({ org, index, courses }) => {
         {courseList.map((course) => (
           <li
             key={course._id}
-            className="text-xl lg:text-md text-dark/75 font-medium hover:text-primary cursor-pointer hover:dark:text-primaryDark dark:text-light"
+            className="text-2xl lg:text-md text-dark/75 font-medium hover:text-primary cursor-pointer hover:dark:text-primaryDark dark:text-light"
           >
             {course.name}
           </li>
@@ -133,7 +134,7 @@ const Courses = () => {
     return (
       <div className="mt-8 sm:px-2">
         <AnimatedText text="Education" className="mb-12" />
-        <FeaturedCourses courses={courseList} />
+        <FeaturedCourses2 courses={courseList} />
         <AnimatedText text="Other Relevant Courses" className=" my-16" />
         <div className="grid grid-cols-3 gap-6 sm:grid-cols-1 md:grid-cols-2 sm:px-2">
           {orgList.map((org, i) => (

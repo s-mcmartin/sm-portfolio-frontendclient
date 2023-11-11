@@ -1,5 +1,6 @@
 import Loading from "./../../components/layout/Loading";
 import Table from "../../components/protected/Table";
+import TableHeading from "../../components/protected/TableHeading";
 import User from "./User";
 import { useGetUsersQuery } from "./usersApiSlice";
 import { useNavigate } from "react-router-dom";
@@ -46,13 +47,7 @@ const UserList = () => {
 
     content = (
       <>
-        <h1 className="text-3xl font-bold">Users List</h1>
-        <button
-          className="p-2 bg-green-200 rounded-full"
-          onClick={() => navigate("/admin/users/new")}
-        >
-          +
-        </button>
+        <TableHeading text="Users List" type="User" />
         <Table tableContent={tableContent} tableControls={tableControls} />
       </>
     );

@@ -4,7 +4,7 @@ const TableRow = ({ tableCells }) => {
       {tableCells.map((cell, index) => (
         <td
           key={index}
-          className={`col-span-${cell.colSpan} flex justify-center items-center`}
+          className={`col-span-${cell.colSpan} text-dark dark:text-light flex justify-center items-center`}
         >
           {cell.content}
         </td>

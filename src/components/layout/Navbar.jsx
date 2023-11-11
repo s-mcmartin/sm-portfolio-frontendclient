@@ -7,7 +7,7 @@ import { useThemeSwitch } from "../../hooks/useThemeSwitch";
 
 export const CustomNavLink = ({ href, title, className = "" }) => {
   const { pathname } = useLocation(); // (/, /about, /projects)
-  console.log(pathname);
+
   return (
     <Link
       to={href}

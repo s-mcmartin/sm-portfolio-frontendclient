@@ -65,7 +65,7 @@ const Projects = () => {
             <AnimatedText text="Featured Projects" className="!text-7xl" />
             <Carousel projects={featuredProjects} />
             <AnimatedText text="Looking for something else?" />
-            <h2 className="mb-6 text-2xl italic text-center dark:text-light/50">
+            <h2 className="mb-8 text-4xl md:text-2xl italic text-center dark:text-light/50">
               Search through some of my other projects...
             </h2>
             <FilterSearch

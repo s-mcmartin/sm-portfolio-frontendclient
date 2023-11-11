@@ -1,7 +1,10 @@
+import { animate, motion, stagger } from "framer-motion";
+
 import AnimatedText from "../../animations/AnimatedText";
 import AnimatedUnderline from "../../animations/AnimatedUnderline";
+import Error from "../../layout/Error";
+import Loading from "../../layout/Loading";
 import { PulseLoader } from "react-spinners";
-import { motion } from "framer-motion";
 import { useGetProjectsQuery } from "../../../features/projects/projectsApiSlice";
 
 const Skills = () => {
@@ -25,8 +28,8 @@ const Skills = () => {
     "React",
   ];
 
-  isLoading && <PulseLoader />;
-  isError && <p>{error.data?.message}</p>;
+  isLoading && <Loading />;
+  isError && <Error text={error.error} />;
   if (isSuccess) {
     const { ids, entities } = projects;
     const techArray = [];
@@ -37,31 +40,43 @@ const Skills = () => {
           : null
       )
     );
-    console.log(techArray);
+
     return (
       <>
         <AnimatedText text="Skills" />
-        <h2 className="font-bold text-3xl mb-2">Strengths</h2>
-        <motion.ul
-          initial={{ y: 50 }}
-          whileInView={{ y: 0 }}
-          transition={{ duration: 0.5, type: "spring" }}
-          className="bg-primary dark:bg-primaryDark  shadow-lg shadow-black p-4 grid grid-cols-3  sm:grid-cols-2 rounded-lg m-2 mb-12"
-        >
-          {strengths.map((strength) => (
-            <li
-              key={strength}
-              className="text-xl dark:text-dark text-light font-semibold p-1"
-            >
-              {strength}
-            </li>
-          ))}
-        </motion.ul>
+        <div className="flex justify-center  items-center mb-8">
+          <motion.ul
+            initial={{ y: 50 }}
+            whileInView={{ y: 0 }}
+            transition={{
+              when: "beforeChildren",
+              duration: 0.5,
+              type: "spring",
+              staggerChildren: 0.2,
+            }}
+            className="p-4 flex flex-wrap justify-center gap-6 m-2 mb-12"
+          >
+            {strengths.map((strength) => (
+              <motion.li
+                initial={{ x: -100 }}
+                whileInView={{ x: 0 }}
+                transition={{
+                  duration: 0.5,
+                  type: "spring",
+                }}
+                key={strength}
+                className="text-3xl w-fit dark:text-dark text-light font-semibold p-1 px-2 shadow-md shadow-dark bg-primary dark:bg-primaryDark"
+              >
+                {strength}
+              </motion.li>
+            ))}
+          </motion.ul>
+        </div>
         <motion.h2
           initial={{ y: 50 }}
           whileInView={{ y: 0 }}
           transition={{ duration: 0.5, type: "spring" }}
-          className="w-full text-lg font-bold uppercase text-dark/75 dark:text-light/75"
+          className="w-full text-4xl font-bold uppercase text-dark/75 dark:text-light/75"
         >
           More tools, languages and libraries:
         </motion.h2>
@@ -73,7 +88,7 @@ const Skills = () => {
           className="list-none flex flex-wrap text-dark/75 dark:text-light/75 gap-1 md:w-full"
         >
           {techArray.map((tool) => (
-            <li key={tool} className="px-2 text-lg">
+            <li key={tool} className="px-2 text-2xl">
               {tool}
             </li>
           ))}

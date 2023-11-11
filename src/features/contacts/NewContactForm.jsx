@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import AnimatedText from "../../components/animations/AnimatedText";
+import Error from "../../components/layout/Error";
 import { useAddNewContactMutation } from "./contactsApiSlice";
 import { useNavigate } from "react-router-dom";
 
@@ -42,22 +44,24 @@ const NewContactForm = () => {
 
   const content = (
     <>
-      <p className={errClass}>{error?.data?.message}</p>
-      <form onSubmit={onSaveContactClicked}>
-        <div>
-          <h2>New Contact</h2>
-          <div>
-            <button
-              className="p-2 bg-indigo-500 rounded-md"
-              title="Save"
-              disabled={!canSave}
-            >
-              SAVE
-            </button>
-          </div>
-          <label htmlFor="name">Name:</label>
+      {isError && <Error text={error.error} />}
+
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="flex flex-col px-12 pb-12 rounded-lg "
+      >
+        <div className="w-full flex flex-wrap justify-center items-center space-x-4">
+          <AnimatedText text="New Contact" className="!text-4xl text-center" />
+        </div>
+        <div className="flex items-center">
+          <label
+            htmlFor="name"
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+          >
+            Name:
+          </label>
           <input
-            className=""
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
             id="name"
             name="name"
             type="text"
@@ -65,11 +69,16 @@ const NewContactForm = () => {
             value={name}
             onChange={onNameChanged}
           />
-          <label className="" htmlFor="email">
+        </div>
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="email"
+          >
             Email:
           </label>
           <input
-            className=""
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
             id="email"
             name="email"
             type="email"
@@ -77,11 +86,16 @@ const NewContactForm = () => {
             value={email}
             onChange={onEmailChanged}
           />
-          <label className="" htmlFor="subject">
+        </div>
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="subject"
+          >
             Subject:
           </label>
           <input
-            className=""
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
             id="subject"
             name="subject"
             type="text"
@@ -89,11 +103,16 @@ const NewContactForm = () => {
             value={subject}
             onChange={onSubjectChanged}
           />
-          <label className="" htmlFor="message">
+        </div>
+        <div className="flex items-center">
+          <label
+            className="w-full text-2xl font-semibold mr-2 dark:text-light"
+            htmlFor="message"
+          >
             Message:
           </label>
           <input
-            className=""
+            className="px-2 mx-2 my-1 bg-dark/75 dark:bg-light/75 p-2 rounded-md dark:text-dark text-light text-2xl"
             id="message"
             name="message"
             type="text"
@@ -102,6 +121,14 @@ const NewContactForm = () => {
             onChange={onMessageChanged}
           />
         </div>
+        <button
+          className="mt-4 p-2 bg-indigo-500 rounded-md mb-4 shadow-black shadow-md text-xl text-dark dark:text-light"
+          title="Save"
+          onClick={onSaveContactClicked}
+          disabled={!canSave}
+        >
+          SAVE
+        </button>
       </form>
     </>
   );

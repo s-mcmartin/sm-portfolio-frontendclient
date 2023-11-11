@@ -1,6 +1,9 @@
+import Error from "../../components/layout/Error";
+import Loading from "../../components/layout/Loading";
 import Project from "./Project";
 import { PulseLoader } from "react-spinners";
 import Table from "../../components/protected/Table";
+import TableHeading from "../../components/protected/TableHeading";
 import useAuth from "../../hooks/useAuth";
 import { useGetProjectsQuery } from "./projectsApiSlice";
 import { useNavigate } from "react-router-dom";
@@ -45,10 +48,10 @@ const ProjectsList = () => {
   const navigate = useNavigate();
   let content;
   if (isLoading) {
-    content = <PulseLoader />;
+    content = <Loading />;
   }
   if (isError) {
-    content = <p className="bg-red-200 text-light">{error?.data?.message}</p>;
+    content = <Error text={error.error} />;
   }
   if (isSuccess) {
     const { ids } = projects;
@@ -61,16 +64,8 @@ const ProjectsList = () => {
 
     content = (
       <>
-        <h1 className="text-3xl font-bold">Project List</h1>
-        <button
-          className={`${
-            isAdmin || isManager ? "opacity-100" : "opacity-25"
-          } p-2 bg-indigo-500 rounded-md`}
-          onClick={() => navigate("/admin/projects/new")}
-          disabled={!isManager || !isAdmin}
-        >
-          +
-        </button>
+        <TableHeading text="Projects List" type="Project" />
+
         <Table tableContent={tableContent} tableControls={tableControls} />
       </>
     );
