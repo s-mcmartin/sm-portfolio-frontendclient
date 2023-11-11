@@ -40,8 +40,6 @@ const NewContactForm = () => {
     }
   };
 
-  const errClass = isError ? "bg-red-200" : "hidden";
-
   const content = (
     <>
       {isError && <Error text={error.error} />}

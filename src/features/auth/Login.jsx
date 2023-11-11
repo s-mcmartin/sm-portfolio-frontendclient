@@ -1,12 +1,11 @@
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
 import AnimatedText from "../../components/animations/AnimatedText";
 import Loading from "../../components/layout/Loading";
-import { PulseLoader } from "react-spinners";
 import { setCredentials } from "./authSlice";
 import { useDispatch } from "react-redux";
 import { useLoginMutation } from "./authApiSlice";
-import { useNavigate } from "react-router-dom";
 import usePersist from "../../hooks/usePersist";
 import useTitle from "../../hooks/useTitle";
 
@@ -71,6 +70,12 @@ const Login = () => {
     <section className="h-full mb-24">
       <header>
         <AnimatedText text="Login" />
+        <div className="w-full flex justify-center items-center mb-4">
+          <p className="text-2xl">Don't have an account?</p>
+          <Link to="/register" className="px-2 underline text-2xl">
+            Sign up
+          </Link>
+        </div>
       </header>
       <main className="flex justify-center items-center w-full px-2">
         <form
@@ -82,7 +87,7 @@ const Login = () => {
           </p>
           <label
             htmlFor="username"
-            className="text-3xl mb-2 md:text-2xl sm:text-xl font-semibold"
+            className="text-3xl mb-2 md:text-2xl sm:text-xl font-semibold text-light"
           >
             Username:
           </label>
@@ -99,7 +104,7 @@ const Login = () => {
           />
           <label
             htmlFor="password"
-            className="text-3xl my-2 md:text-2xl sm:text-xl font-semibold"
+            className="text-3xl my-2 md:text-2xl sm:text-xl font-semibold text-light"
           >
             Password:
           </label>

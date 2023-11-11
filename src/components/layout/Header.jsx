@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import MobileNavbar from "./MobileNavbar";
 import Navbar from "./Navbar";
 import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 import { useSendLogoutMutation } from "../../features/auth/authApiSlice";
 import { useThemeSwitch } from "../../hooks/useThemeSwitch";
 
@@ -11,10 +12,14 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [sendLogout, { isLoading, isSuccess, isError, error }] =
     useSendLogoutMutation();
-
+  const navigate = useNavigate();
   const { username } = useAuth();
 
   const handleClick = () => setIsOpen(!isOpen);
+  const handleLogout = () => {
+    sendLogout();
+    navigate("/login");
+  };
 
   return (
     <header
@@ -59,7 +64,7 @@ lg:px-16 relative z-1 md:px-12 sm:px-8 dark:bg-dark
           setMode={setMode}
           handleClick={handleClick}
           isUser={username !== "" ? true : false}
-          onClickLogout={() => sendLogout()}
+          onClickLogout={handleLogout}
         />
       ) : null}
     </header>

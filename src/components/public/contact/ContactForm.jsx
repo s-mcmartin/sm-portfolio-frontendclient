@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 
 import Error from "../../layout/Error";
 import Loading from "../../layout/Loading";
-import { RingLoader } from "react-spinners";
 import emailjs from "@emailjs/browser";
 import { useAddNewContactMutation } from "../../../features/contacts/contactsApiSlice";
 import useTitle from "../../../hooks/useTitle";
@@ -27,7 +26,7 @@ const ContactForm = ({ handleToggleSuccess }) => {
       setMessage("");
       handleToggleSuccess();
     }
-  }, [isSuccess]);
+  }, [isSuccess, handleToggleSuccess]);
 
   const handleChangeName = (e) => setName(e.target.value);
   const handleChangeEmail = (e) => setEmail(e.target.value);

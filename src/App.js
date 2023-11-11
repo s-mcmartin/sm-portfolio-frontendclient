@@ -22,6 +22,7 @@ import Prefetch from "./features/auth/Prefetch";
 import Projects from "./components/public/projects/Projects";
 import ProjectsList from "./features/projects/ProjectsList";
 import { ROLES } from "./config/roles";
+import Register from "./features/auth/Register";
 import RequireAuth from "./features/auth/RequireAuth";
 import UserList from "./features/users/UserList";
 import useTitle from "./hooks/useTitle";
@@ -46,6 +47,7 @@ function App() {
           <Route path="projects" element={<Projects />} />
           <Route path="contact" element={<Contact />} />
           <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
           {/* START PROTECTED ROUTES */}
           <Route element={<PersistLogin />}>
             <Route

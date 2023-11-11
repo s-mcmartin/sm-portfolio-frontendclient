@@ -1,6 +1,6 @@
 import Contact from "./Contact";
+import Error from "../../components/layout/Error";
 import Loading from "./../../components/layout/Loading";
-import { PulseLoader } from "react-spinners";
 import Table from "../../components/protected/Table";
 import TableHeading from "../../components/protected/TableHeading";
 import { useGetContactsQuery } from "./contactsApiSlice";
@@ -45,7 +45,7 @@ const ContactList = () => {
     content = <Loading />;
   }
   if (isError) {
-    content = <p className="bg-red-200 text-light">{error?.data?.message}</p>;
+    content = <Error text={error.error} />;
   }
   if (isSuccess) {
     const { ids } = contacts;

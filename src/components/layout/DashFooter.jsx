@@ -21,7 +21,10 @@ const DashFooter = () => {
         Current user: <span className="px-2 font-semibold">{username}</span>
       </p>
       <p className="text-xl font-light px-4">
-        Status: <span className="px-2 font-semibold">{status}</span>
+        Status:{" "}
+        <span className="px-2 font-semibold">
+          {status === "Employee" ? "Guest" : status}
+        </span>
       </p>
     </footer>
   );

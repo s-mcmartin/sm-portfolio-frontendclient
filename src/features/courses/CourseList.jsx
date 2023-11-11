@@ -1,7 +1,6 @@
 import Course from "./Course";
 import Error from "../../components/layout/Error";
 import Loading from "../../components/layout/Loading";
-import { PulseLoader } from "react-spinners";
 import Table from "./../../components/protected/Table";
 import TableHeading from "../../components/protected/TableHeading";
 import { useGetCoursesQuery } from "./coursesApiSlice";

@@ -7,18 +7,13 @@ const Course = ({ courseId }) => {
   const { course } = useGetCoursesQuery("coursesList", {
     selectFromResult: ({ data }) => ({ course: data?.entities[courseId] }),
   });
-  const tableCells = [
-    {
-      content: course.organization,
-      colSpan: 1,
-    },
-  ];
+
   const navigate = useNavigate();
 
   if (course) {
     const handleEdit = () => navigate(`/admin/courses/${courseId}`);
     const techString = course.tech.toString().replaceAll(",", ", ");
-    const cellStatus = course.featured ? "bg-indigo-500" : "";
+
     const tableCells = [
       {
         content: course.organization,

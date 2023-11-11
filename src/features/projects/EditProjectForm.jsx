@@ -6,9 +6,11 @@ import { useEffect, useState } from "react";
 
 import AnimatedText from "../../components/animations/AnimatedText";
 import Error from "../../components/layout/Error";
+import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 const EditProjectForm = ({ project }) => {
+  const { isManager, isAdmin } = useAuth();
   const [updateProject, { isLoading, isSuccess, isError, error }] =
     useUpdateProjectMutation();
 

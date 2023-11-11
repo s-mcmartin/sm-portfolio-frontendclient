@@ -52,7 +52,7 @@ const Contact = ({ contactId }) => {
     ];
     return <TableRow tableCells={tableCells} />;
   } else {
-    return <p>No project found for ID: {contactId}</p>;
+    return <p>No contact data found for ID: {contactId}</p>;
   }
 };
 
