@@ -21,8 +21,6 @@ const Projects = () => {
     error,
   } = useGetProjectsQuery();
 
-  console.log("error", error);
-
   const handleClickSearch = (e) => {
     const query = e.target.value;
     const selectedList = selected;

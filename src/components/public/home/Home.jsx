@@ -32,15 +32,15 @@ const Home = () => {
             <div className="flex w-1/2 flex-col items-center self-center lg:w-full lg:text-center pl-8">
               <AnimatedText
                 text="Fullstack Portfolio"
-                className="!text-left !leading-[6rem]"
+                className="!text-left !leading-[6rem] !-mt-8"
               />
-              <p className="flex justify-start items-center gap-2 w-full text-3xl lg:justify-center">
+              <p className="flex justify-start items-center gap-x-2 w-full text-3xl lg:justify-center -mt-12">
                 <FaReact />
                 <SiTailwindcss />
                 <SiMongodb />
                 <TbBrandFramer />
               </p>
-              <p className="my-4 text-base font-medium md:text-sm sm:!text-xs">
+              <p className="my-4 text-base font-medium">
                 Hello there! I&apos;m{" "}
                 <span className="font-semibold">Shannon McGuire</span>. This
                 portfolio is a glimpse into my coding journey and showcases the
@@ -52,7 +52,7 @@ const Home = () => {
                 <a
                   // eslint-disable-next-line react/no-unknown-property
 
-                  href="/dummy.pdf"
+                  href="/assets/dummy.pdf"
                   target={"_blank"}
                   className={`flex items-center rounded-lg border-2 border-solid bg-dark p-2.5 px-6 text-lg font-semibold
        capitalize text-light hover:border-dark hover:bg-transparent hover:text-dark 

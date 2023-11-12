@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { MoonIcon, SunIcon } from "../icons/Icons";
 
 import { motion } from "framer-motion";
-import { useThemeSwitch } from "../../hooks/useThemeSwitch";
 
 export const CustomNavLink = ({ href, title, className = "" }) => {
   const { pathname } = useLocation(); // (/, /about, /projects)

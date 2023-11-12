@@ -80,11 +80,11 @@ const Carousel = ({ projects }) => {
               />
             </motion.div>
           </div>
-          <div className="relative rounded-[10px] aspect-video w-[45vw] m-auto overflow-hidden sm:mb-0 md:w-[80vw] sm:h-[60vh] sm:justify-self-start">
+          <div className="relative rounded-[10px] aspect-video w-[45vw] m-auto overflow-hidden sm:mb-0 md:w-[80vw]  sm:justify-self-start">
             <AnimatePresence>
               <TransitionEffect />
               <motion.div
-                className="w-[99%] h-[99%] rounded-xl shadow-xl shadow-dark overflow-hidden bg-no-repeat bg-cover"
+                className="w-[99%] aspect-video rounded-xl shadow-2xl shadow-dark bg-no-repeat bg-cover"
                 key={currentIndex}
                 src={projects[currentIndex].image}
                 initial={direction === "right" ? "hiddenRight" : "hiddenLeft"}

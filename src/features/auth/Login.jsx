@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
 import AnimatedText from "../../components/animations/AnimatedText";
+import Error from "../../components/layout/Error";
 import Loading from "../../components/layout/Loading";
 import { setCredentials } from "./authSlice";
 import { useDispatch } from "react-redux";
@@ -22,11 +23,7 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [login, { isLoading }] = useLoginMutation();
-
-  useEffect(() => {
-    userRef.current.focus();
-  }, []);
+  const [login, { isLoading, isError, error }] = useLoginMutation();
 
   useEffect(() => {
     setErrMsg("");
@@ -49,20 +46,18 @@ const Login = () => {
       setPassword("");
       navigate("/admin");
     } catch (err) {
+      console.log(err);
       if (!err.status) {
         setErrMsg("No server response");
       } else if (err.status === 400) {
         setErrMsg("Missing username or password");
       } else if (err.status === 401) {
-        setErrMsg("Unauthorized");
+        setErrMsg(err?.data?.message);
       } else {
         setErrMsg(err.data?.message);
       }
     }
-    errRef.current.focus();
   };
-
-  const errClass = errMsg ? "bg-red-300" : "hidden";
 
   if (isLoading) return <Loading />;
 
@@ -71,8 +66,11 @@ const Login = () => {
       <header>
         <AnimatedText text="Login" />
         <div className="w-full flex justify-center items-center mb-4">
-          <p className="text-2xl">Don't have an account?</p>
-          <Link to="/register" className="px-2 underline text-2xl">
+          <p className="text-2xl dark:text-light">Don't have an account?</p>
+          <Link
+            to="/register"
+            className="px-2 underline text-2xl dark:text-primaryDark"
+          >
             Sign up
           </Link>
         </div>
@@ -82,12 +80,14 @@ const Login = () => {
           onSubmit={handleSubmit}
           className="flex flex-col p-8 bg-dark dark:bg-light rounded-lg shadow-black shadow-lg w-1/3 md:w-2/3 sm:w-full"
         >
-          <p ref={errRef} className={errClass} aria-live="assertive">
-            {errMsg}
-          </p>
+          {isError && errMsg !== "" ? (
+            <p className="text-red-600 text-2xl">
+              <span className="font-bold">Error:</span> {errMsg}
+            </p>
+          ) : null}
           <label
             htmlFor="username"
-            className="text-3xl mb-2 md:text-2xl sm:text-xl font-semibold text-light"
+            className="text-3xl mb-2 md:text-2xl sm:text-xl font-semibold text-light dark:text-dark"
           >
             Username:
           </label>
@@ -104,7 +104,7 @@ const Login = () => {
           />
           <label
             htmlFor="password"
-            className="text-3xl my-2 md:text-2xl sm:text-xl font-semibold text-light"
+            className="text-3xl my-2 md:text-2xl sm:text-xl font-semibold text-light dark:text-dark"
           >
             Password:
           </label>

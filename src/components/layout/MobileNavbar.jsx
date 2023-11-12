@@ -15,15 +15,17 @@ export const CustomMobileLink = ({ href, title, className = "", toggle }) => {
 
   return (
     <button
-      className={`${className} rounded relative group lg:text-light lg:dark:text-dark`}
+      className={`${className} rounded relative group text-2xl lg:text-light lg:dark:text-dark`}
       onClick={handleClick}
     >
       {title}
       <span
         className={`
             inline-block h-[1px] bg-dark absolute left-0 -bottom-0.5 
-            group-hover:w-full transition-[width] ease duration-300 dark:bg-light
-            ${pathname === href ? "w-full" : " w-0"} lg:bg-light lg:dark:bg-dark
+            group-hover:w-full transition-[width] ease duration-300 dark:bg-primary
+            ${
+              pathname === href ? "w-full" : " w-0"
+            } lg:bg-primaryDark lg:dark:bg-primary
             `}
       >
         &nbsp;
@@ -93,7 +95,7 @@ py-32 bg-dark/90 dark:bg-light/75 rounded-lg z-50 backdrop-blur-md hidden lg:fle
       >
         <motion.a
           target={"_blank"}
-          className="w-6 m-1 text-xl mx-3 rounded-full text-light dark:text-dark sm:mx-1"
+          className="w-8 m-1 text-3xl mx-3 rounded-full text-light dark:text-dark sm:mx-1"
           href="#"
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.9 }}
@@ -103,7 +105,7 @@ py-32 bg-dark/90 dark:bg-light/75 rounded-lg z-50 backdrop-blur-md hidden lg:fle
         </motion.a>
         <motion.a
           target={"_blank"}
-          className="w-6 m-1 mx-3 sm:mx-1 text-xl text-light dark:text-dark"
+          className="w-8 m-1 mx-3 sm:mx-1 text-3xl text-light dark:text-dark"
           href="#"
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.9 }}
@@ -113,7 +115,7 @@ py-32 bg-dark/90 dark:bg-light/75 rounded-lg z-50 backdrop-blur-md hidden lg:fle
         </motion.a>
         <motion.a
           target={"_blank"}
-          className="w-6 m-1 mx-3 text-xl rounded-full sm:mx-1 text-light dark:text-dark"
+          className="w-8 m-1 mx-3 text-3xl rounded-full sm:mx-1 text-light dark:text-dark"
           href="#"
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.9 }}
@@ -124,7 +126,7 @@ py-32 bg-dark/90 dark:bg-light/75 rounded-lg z-50 backdrop-blur-md hidden lg:fle
 
         <button
           onClick={() => setMode(mode === "light" ? "dark" : "light")}
-          className={`w-6 h-6 ease m-1 ml-3 sm:mx-1 flex items-center justify-center rounded-full p-1  
+          className={`w-full h-full ease m-1 ml-3 sm:mx-1 flex items-center justify-center rounded-full p-1  
   ${mode === "light" ? "bg-dark  text-light" : "bg-light  text-dark"}
   `}
           aria-label="theme-switcher"
