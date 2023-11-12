@@ -55,7 +55,7 @@ const Carousel = ({ projects }) => {
           <div className="my-auto relative rounded-[10px] h-full min-w-[500px] lg:min-w-[350px] md:hidden">
             <TransitionEffect />
             <motion.div
-              className="w-[99%] aspect-video rounded-xl shadow-2xl shadow-dark bg-no-repeat bg-cover"
+              className="w-[99%] aspect-square rounded-xl shadow-2xl shadow-dark bg-no-repeat bg-cover"
               key={currentIndex}
               src={projects[currentIndex].image}
               initial={direction === "right" ? "hiddenRight" : "hiddenLeft"}
@@ -84,7 +84,7 @@ const Carousel = ({ projects }) => {
             <AnimatePresence>
               <TransitionEffect />
               <motion.div
-                className="w-[99%] aspect-video rounded-xl shadow-2xl shadow-dark bg-no-repeat bg-cover"
+                className="w-[99%] aspect-square rounded-xl shadow-2xl shadow-dark bg-no-repeat bg-cover"
                 key={currentIndex}
                 src={projects[currentIndex].image}
                 initial={direction === "right" ? "hiddenRight" : "hiddenLeft"}
@@ -102,7 +102,7 @@ const Carousel = ({ projects }) => {
             <AnimatePresence>
               <TransitionEffect />
               <motion.div
-                className="w-[99%] aspect-video rounded-xl shadow-2xl shadow-dark bg-no-repeat bg-cover"
+                className="w-[99%] aspect-square rounded-xl shadow-2xl shadow-dark bg-no-repeat bg-cover"
                 key={currentIndex}
                 src={projects[currentIndex].image}
                 initial={direction === "right" ? "hiddenRight" : "hiddenLeft"}
