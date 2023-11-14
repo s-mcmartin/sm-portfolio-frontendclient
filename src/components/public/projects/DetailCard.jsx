@@ -31,7 +31,7 @@ const DetailCard = ({ projectId }) => {
       onClick={() => setExpanded(!expanded)}
     >
       {expanded && (
-        <div className="w-fit h-12 my-1 justify-end flex items-center self-end lg:h-8">
+        <div className="w-fit h-12 my-2 justify-end flex items-center self-end lg:h-8">
           <a href={project?.github}>
             <AiFillGithub className="w-[2.5rem] h-[2.5rem] sm:w-[1.5rem] sm:h-[1.5rem] mr-4 text-light hover:text-primary cursor-pointer hover:scale-110" />
           </a>
@@ -41,7 +41,7 @@ const DetailCard = ({ projectId }) => {
         </div>
       )}
       <h1
-        className={`flex items-center justify-center gap-4 text-center text-light w-full text-3xl h-fit lg:text-xl`}
+        className={`flex items-center justify-center gap-2 my-2 text-center text-light w-full text-3xl h-fit`}
         transition={{ duration: 0.5, ease: easeInOut }}
       >
         {project?.name}
@@ -54,14 +54,17 @@ const DetailCard = ({ projectId }) => {
         </span>
       </h1>
       {expanded && (
-        <p className="text-light/80 italic grow mt-2 text-xl lg:text-lg mb-2">
+        <p className="text-light/80 italic grow mt-2 text-2xl  mb-2">
           {project?.description}
         </p>
       )}
       {expanded && (
         <div className="flex flex-wrap">
           {project?.tech.map((tool) => (
-            <span className="h-fit w-fit px-1 py-0.25 text-dark bg-light text-lg mr-2 mb-8 flex-wrap lg:text-sm lg:mb-2">
+            <span
+              key={tool}
+              className="h-fit w-fit px-1 py-0.25 text-dark bg-light text-xl mr-2 mb-8 flex-wrap lg:text-base lg:mb-2"
+            >
               {tool}
             </span>
           ))}

@@ -60,7 +60,7 @@ const Projects = () => {
           className={`mb-16  flex w-full flex-col items-center justify-center dark:text-light`}
         >
           <MainSection className="pt-16">
-            <AnimatedText text="Featured Projects" className="!text-7xl" />
+            <AnimatedText text="Featured Projects" />
             <Carousel projects={featuredProjects} />
             <AnimatedText text="Looking for something else?" />
             <h2 className="mb-8 text-4xl md:text-2xl italic text-center dark:text-light/50">
@@ -83,6 +83,18 @@ const Projects = () => {
                     <ProjectCard projectId={projectId} key={index} />
                   ))}
             </div>
+            <p className="mt-4 text-2xl text-dark dark:text-light">
+              For more projects or information, visit my{" "}
+              <span>
+                <a
+                  href="https://github.com/s-mcmartin"
+                  className="text-primary dark:text-primaryDark underline"
+                >
+                  Github
+                </a>
+              </span>{" "}
+              page.
+            </p>
           </MainSection>
         </main>
       </>
