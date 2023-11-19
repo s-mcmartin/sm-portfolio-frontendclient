@@ -24,7 +24,7 @@ const ProjectCard = ({ projectId }) => {
     <article
       key={project._id}
       className="bg-white relative w-full aspect-video shadow-md shadow-black rounded-lg bg-contain overflow-hidden"
-      style={{ backgroundImage: `url(${project.image})` }}
+      style={{ backgroundImage: `url(${project?.image})` }}
     >
       {project.featured === "true" && (
         <div className="absolute top-2 right-2 text-yellow-300 bg-black/50 p-1 shadow-md shadow-black rounded-full">
