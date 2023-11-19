@@ -36,8 +36,8 @@ const Projects = () => {
   if (isSuccess) {
     const { ids, entities } = projects;
 
-    const selectedProjects = ids.filter((projectId) =>
-      selected.every((tool) => entities[projectId].tech.includes(tool))
+    const selectedProjects = ids?.filter((projectId) =>
+      selected?.every((tool) => entities[projectId]?.tech?.includes(tool))
     );
     const sortedSelectedProjects = selectedProjects?.sort((a, b) => {
       if (a.name < b.name) {
