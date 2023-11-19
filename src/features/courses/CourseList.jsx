@@ -56,10 +56,10 @@ const CourseList = () => {
       : null;
 
     content = (
-      <>
+      <div className="min-w-screen min-h-full">
         <TableHeading type="Course" text="Course List" />
         <Table tableContent={tableContent} tableControls={tableControls} />
-      </>
+      </div>
     );
   }
   return content;

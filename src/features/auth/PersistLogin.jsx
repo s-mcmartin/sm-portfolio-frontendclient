@@ -1,6 +1,8 @@
 import { Link, Outlet } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
+import Error from "../../components/layout/Error";
+import Loading from "../../components/layout/Loading";
 import { selectCurrentToken } from "./authSlice";
 import usePersist from "../../hooks/usePersist";
 import { useRefreshMutation } from "./authApiSlice";
@@ -48,15 +50,24 @@ const PersistLogin = () => {
   } else if (isLoading) {
     //persist: yes, token: no
     console.log("loading");
-    content = <p>Loading...</p>;
+    content = <Loading />;
   } else if (isError) {
     //persist: yes, token: no
     console.log("error");
     content = (
-      <p className="errmsg">
-        {`${error?.data?.message} - `}
-        <Link to="/login">Please login again</Link>.
-      </p>
+      <div className="p-8">
+        <p className="text-lg bg-red-200 px-2 mb-2">{error?.data?.message}</p>
+        <p>
+          Please{" "}
+          <Link
+            to="/login"
+            className="underline text-primary dark:text-primaryDark"
+          >
+            login
+          </Link>{" "}
+          again.
+        </p>
+      </div>
     );
   } else if (isSuccess && trueSuccess) {
     //persist: yes, token: yes

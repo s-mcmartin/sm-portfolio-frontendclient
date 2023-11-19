@@ -24,7 +24,7 @@ const DashNav = () => {
           pathname === href
             ? "bg-primary dark:bg-primaryDark dark:text-dark text-light"
             : "dark:text-light text-dark"
-        }`}
+        } md:text-lg`}
         to={href}
       >
         {title}
@@ -34,7 +34,7 @@ const DashNav = () => {
 
   return (
     <header
-      className={`w-full flex justify-center my-8 items-center space-x-4`}
+      className={`w-full flex justify-center my-8 items-center space-x-4 md:flex-col md:items-start`}
     >
       <AdminLink href="/admin" title={"Dashboard"} />
       <AdminLink href="/admin/courses" title="Courses" />

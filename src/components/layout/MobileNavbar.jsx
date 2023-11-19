@@ -126,7 +126,7 @@ py-32 bg-dark/90 dark:bg-light/75 rounded-lg z-50 backdrop-blur-md hidden lg:fle
 
         <button
           onClick={() => setMode(mode === "light" ? "dark" : "light")}
-          className={`w-full h-full ease m-1 ml-3 sm:mx-1 flex items-center justify-center rounded-full p-1  
+          className={`w-8  ease m-1 ml-3 sm:mx-1 flex items-center justify-center rounded-full p-1  
   ${mode === "light" ? "bg-dark  text-light" : "bg-light  text-dark"}
   `}
           aria-label="theme-switcher"

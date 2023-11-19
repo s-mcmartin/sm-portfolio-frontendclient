@@ -1,6 +1,7 @@
 import { SiMongodb, SiTailwindcss } from "react-icons/si";
 
 import { FaReact } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import MainSection from "./MainSection";
 import { TbBrandFramer } from "react-icons/tb";
 
@@ -14,13 +15,9 @@ const Footer = () => {
       <MainSection className="py-8 flex items-center justify-between lg:flex-col lg:py-6">
         <span>{new Date().getFullYear()} &copy; Shannon McGuire</span>
 
-        <a
-          href="/contact"
-          target="_blank"
-          className="underline underline-offset-2"
-        >
+        <Link to="/contact" className="underline underline-offset-2">
           Contact Me
-        </a>
+        </Link>
         <p className="flex gap-2">
           Created with:
           <span className="flex justify-between items-center gap-2">

@@ -1,11 +1,8 @@
 const TableRow = ({ tableCells }) => {
   return (
-    <tr className="grid grid-cols-12 w-full  text-light">
+    <tr className="">
       {tableCells.map((cell, index) => (
-        <td
-          key={index}
-          className={`col-span-${cell.colSpan} text-dark dark:text-light flex justify-center items-center`}
-        >
+        <td key={index} className={`bg-light border-4 border-white px-4`}>
           {cell.content}
         </td>
       ))}

@@ -32,7 +32,7 @@ const Home = () => {
             <div className="flex w-1/2 flex-col items-center self-center lg:w-full lg:text-center pl-8">
               <AnimatedText
                 text="Fullstack Portfolio"
-                className="!text-left !leading-[6rem] !-mt-8"
+                className="!text-left !leading-[6rem]"
               />
               <p className="flex justify-start items-center gap-x-2 w-full text-3xl lg:justify-center -mt-12">
                 <FaReact />
