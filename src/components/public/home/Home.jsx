@@ -9,6 +9,7 @@ import MainSection from "../../layout/MainSection";
 import { TbBrandFramer } from "react-icons/tb";
 import TransitionEffect from "../../transitions/TransitionEffect";
 import profilePic from "../../../assets/images/homephoto.png";
+import resume from "../../../assets/resume.pdf";
 import useTitle from "../../../hooks/useTitle";
 
 const Home = () => {
@@ -52,8 +53,9 @@ const Home = () => {
                 <a
                   // eslint-disable-next-line react/no-unknown-property
 
-                  href="/assets/dummy.pdf"
+                  href={resume}
                   target={"_blank"}
+                  rel="noreferrer"
                   className={`flex items-center rounded-lg border-2 border-solid bg-dark p-2.5 px-6 text-lg font-semibold
        capitalize text-light hover:border-dark hover:bg-transparent hover:text-dark 
        dark:bg-light dark:text-dark dark:hover:border-light dark:hover:bg-dark dark:hover:text-light
