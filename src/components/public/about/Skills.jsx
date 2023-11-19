@@ -1,10 +1,8 @@
-import { animate, motion, stagger } from "framer-motion";
-
 import AnimatedText from "../../animations/AnimatedText";
 import AnimatedUnderline from "../../animations/AnimatedUnderline";
 import Error from "../../layout/Error";
 import Loading from "../../layout/Loading";
-import { PulseLoader } from "react-spinners";
+import { motion } from "framer-motion";
 import { useGetProjectsQuery } from "../../../features/projects/projectsApiSlice";
 
 const Skills = () => {
@@ -33,8 +31,8 @@ const Skills = () => {
   if (isSuccess) {
     const { ids, entities } = projects;
     const techArray = [];
-    ids.map((projectId) =>
-      entities[projectId].tech.map((projectTechArray) =>
+    ids?.map((projectId) =>
+      entities[projectId]?.tech?.map((projectTechArray) =>
         !techArray.includes(projectTechArray)
           ? techArray.push(projectTechArray)
           : null

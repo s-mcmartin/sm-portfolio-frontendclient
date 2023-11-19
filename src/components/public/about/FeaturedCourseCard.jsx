@@ -19,7 +19,9 @@ const FeaturedCourseCard = ({ courseId }) => {
         </h3>
         <ul className="grid grid-cols-2 m-4 gap-2">
           {course?.tech?.map((tool) => (
-            <li className="text-xl">{tool}</li>
+            <li key={tool} className="text-xl">
+              {tool}
+            </li>
           ))}
         </ul>
       </div>
