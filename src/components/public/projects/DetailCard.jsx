@@ -1,8 +1,8 @@
 import { AiFillCaretDown, AiFillCaretUp, AiFillGithub } from "react-icons/ai";
-import { FiExternalLink, FiGlobe } from "react-icons/fi";
 import React, { useState } from "react";
 import { easeInOut, motion } from "framer-motion";
 
+import { FiGlobe } from "react-icons/fi";
 import { useGetProjectsQuery } from "../../../features/projects/projectsApiSlice";
 
 const DetailCard = ({ projectId }) => {

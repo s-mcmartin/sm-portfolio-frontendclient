@@ -1,7 +1,7 @@
 import { AiFillCaretDown, AiFillCaretUp, AiTwotoneStar } from "react-icons/ai";
 
 import { AiFillGithub } from "react-icons/ai";
-import { FiExternalLink } from "react-icons/fi";
+import { FiGlobe } from "react-icons/fi";
 import { easeInOut } from "framer-motion";
 import { motion } from "framer-motion";
 import { useGetProjectsQuery } from "../../../features/projects/projectsApiSlice";
@@ -23,14 +23,26 @@ const ProjectCard = ({ projectId }) => {
   return (
     <article
       key={project?._id}
-      className="bg-white relative w-full aspect-video shadow-md shadow-black rounded-lg bg-contain overflow-hidden"
+      className="bg-white relative w-full aspect-video shadow-md shadow-black rounded-lg bg-cover bg-center overflow-hidden"
       style={{ backgroundImage: `url(${project?.image})` }}
     >
-      {project?.featured === "true" && (
-        <div className="absolute top-2 right-2 text-yellow-300 bg-black/50 p-1 shadow-md shadow-black rounded-full">
-          <AiTwotoneStar />
-        </div>
-      )}
+      <div className="absolute top-2 right-2 shadow-sm shadow-black flex gap-2 bg-primary rounded-md py-1 px-2 place-items-center dark:bg-primaryDark dark:text-dark">
+        {project?.github ? (
+          <a href={project?.github}>
+            <AiFillGithub className="w-6 h-6 hover:text-light hover:scale-110" />
+          </a>
+        ) : null}
+        {project?.website ? (
+          <a href={project?.website}>
+            <FiGlobe className="w-6 h-6 hover:text-light hover:scale-110" />
+          </a>
+        ) : null}
+        {project?.featured === "true" && (
+          <div className=" text-yellow-300 bg-black/50 p-1 shadow-md shadow-black rounded-full">
+            <AiTwotoneStar />
+          </div>
+        )}
+      </div>
       <motion.div
         className={`absolute bottom-0 w-full bg-dark/90 text-light h-1/4 flex flex-col items-center justify-center z-10 rounded-b-lg cursor-pointer ${
           expanded ? "justify-between p-1" : null
@@ -62,7 +74,7 @@ const ProjectCard = ({ projectId }) => {
               <AiFillGithub className="w-6 h-6 hover:text-primary hover:scale-110" />
             </a>
             <a href={project?.website}>
-              <FiExternalLink className="w-6 h-6 hover:text-primary hover:scale-110" />
+              <FiGlobe className="w-6 h-6 hover:text-primary hover:scale-110" />
             </a>
           </div>
         )}

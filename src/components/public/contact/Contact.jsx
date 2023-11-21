@@ -42,7 +42,7 @@ const Contact = () => {
                 <motion.a
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.9 }}
-                  href="https://www.linkedin.com/public-profile/settings?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact-info%3BuNhQYgqBRzaWSdnIUZ3Kxg%3D%3D"
+                  href="http://www.linkedin.com/in/shannon-mcguire-294647231"
                   aria-label="Checkout my linkedIn profile"
                 >
                   <AiFillLinkedin className="hover:text-primary dark:hover:text-primaryDark cursor-pointer" />

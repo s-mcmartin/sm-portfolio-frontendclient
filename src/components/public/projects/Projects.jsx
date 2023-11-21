@@ -75,13 +75,22 @@ const Projects = () => {
               selectedProjectsLength={selectedProjectsLength}
             />
             <div className="w-full grid grid-cols-3 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-3 h-fit grid-row-auto my-4 ">
-              {!selected.length
-                ? ids.map((projectId) => (
-                    <ProjectCard key={projectId} projectId={projectId} />
-                  ))
-                : sortedSelectedProjects.map((projectId, index) => (
-                    <ProjectCard projectId={projectId} key={index} />
-                  ))}
+              {!selected.length ? (
+                ids.map((projectId) => (
+                  <ProjectCard key={projectId} projectId={projectId} />
+                ))
+              ) : sortedSelectedProjects.length ? (
+                sortedSelectedProjects.map((projectId, index) => (
+                  <ProjectCard projectId={projectId} key={index} />
+                ))
+              ) : (
+                <p className="text-3xl w-full text-center leading-loose">
+                  No projects found for: <br />
+                  <span className="bg-primary text-light dark:bg-primaryDark dark:text-dark px-2">
+                    {selected.toString().replace(",", ", ")}
+                  </span>
+                </p>
+              )}
             </div>
             <p className="mt-4 text-2xl text-dark dark:text-light">
               For more projects or information, visit my{" "}
