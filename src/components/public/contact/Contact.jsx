@@ -50,7 +50,7 @@ const Contact = () => {
                 <motion.a
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.9 }}
-                  href="mailto:shannoncmcguire85@gmail.com"
+                  href="mailto:shannoncmcguire@outlook.com"
                   aria-label="Email me"
                 >
                   <AiFillMail className="hover:text-primary dark:hover:text-primaryDark cursor-pointer" />

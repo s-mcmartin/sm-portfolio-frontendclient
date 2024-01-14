@@ -64,7 +64,7 @@ const Navbar = ({ mode, setMode, isUser, onClickLogout }) => {
         <motion.a
           target={"_blank"}
           className="w-8 mx-3 rounded-full"
-          href="mailto:shannoncmcguire85@gmail.com"
+          href="mailto:shannoncmcguire@outlook.com"
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.9 }}
           aria-label="Email me"

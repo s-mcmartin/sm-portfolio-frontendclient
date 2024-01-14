@@ -36,10 +36,10 @@ const ContactForm = ({ handleToggleSuccess }) => {
   const sendEmail = () => {
     emailjs
       .sendForm(
-        "service_pz59rqv",
-        "template_uq1qoqi",
+        "service_te68gh7",
+        "template_4pb7rot",
         form.current,
-        "IcjMs68R5OeqYZGGC"
+        "mjQcD_M30wGvbOC5G"
       )
       .then(
         (result) => {
